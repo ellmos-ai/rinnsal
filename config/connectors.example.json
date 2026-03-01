@@ -1,0 +1,17 @@
+{
+    "_comment": "Connector-spezifische Config. Hauptconfig ist rinnsal.json.",
+    "telegram": {
+        "bot_token_env": "RINNSAL_TELEGRAM_TOKEN",
+        "owner_chat_id": "123456789",
+        "sender_tag": "Rinnsal"
+    },
+    "discord": {
+        "bot_token_env": "RINNSAL_DISCORD_TOKEN",
+        "default_channel": "1234567890",
+        "webhook_url": ""
+    },
+    "homeassistant": {
+        "access_token_env": "RINNSAL_HA_TOKEN",
+        "endpoint": "http://homeassistant.local:8123"
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "memory": {
+        "db_path": "rinnsal.db",
+        "default_agent_id": "default"
+    },
+    "connectors": {
+        "telegram": {
+            "bot_token_env": "RINNSAL_TELEGRAM_TOKEN",
+            "owner_chat_id": ""
+        },
+        "discord": {
+            "bot_token_env": "RINNSAL_DISCORD_TOKEN",
+            "default_channel": "",
+            "webhook_url": ""
+        },
+        "homeassistant": {
+            "access_token_env": "RINNSAL_HA_TOKEN",
+            "endpoint": "http://homeassistant.local:8123"
+        }
+    },
+    "auto": {
+        "default_model": "claude-sonnet-4-6",
+        "default_permission_mode": "dontAsk",
+        "default_allowed_tools": ["Read", "Edit", "Write", "Bash", "Glob", "Grep"],
+        "default_timeout_seconds": 1800,
+        "telegram": {
+            "enabled": false,
+            "bot_token_env": "RINNSAL_TELEGRAM_TOKEN",
+            "chat_id": ""
+        }
+    }
+}

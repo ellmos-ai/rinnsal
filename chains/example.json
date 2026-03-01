@@ -1,0 +1,30 @@
+{
+    "chain_name": "example",
+    "description": "Beispiel-Kette: Worker + Reviewer Loop",
+    "mode": "loop",
+    "max_rounds": 5,
+    "runtime_hours": 2,
+    "max_consecutive_blocks": 3,
+    "links": [
+        {
+            "name": "worker",
+            "role": "worker",
+            "model": "claude-sonnet-4-6",
+            "prompt": "example_worker",
+            "until_full": true,
+            "description": "Hauptarbeiter"
+        },
+        {
+            "name": "reviewer",
+            "role": "reviewer",
+            "model": "claude-sonnet-4-6",
+            "prompt": "example_reviewer",
+            "telegram_update": true,
+            "description": "Qualitaetskontrolle"
+        }
+    ],
+    "prompts": {
+        "example_worker": "Fuehre die naechste Aufgabe aus dem Handoff aus.",
+        "example_reviewer": "Pruefe die Arbeit des Workers und schreibe ein Handoff fuer die naechste Runde."
+    }
+}
