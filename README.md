@@ -1,4 +1,10 @@
+<p align="center">
+  <img src="ellmos-logo.jpg" alt="Rinnsal logo" width="300">
+</p>
+
 # Rinnsal
+
+*The trickle -- lightweight LLM agent infrastructure by [ellmos-ai](https://github.com/ellmos-ai).*
 
 Lightweight LLM agent infrastructure: **Memory**, **Connectors**, **Automation**.
 
