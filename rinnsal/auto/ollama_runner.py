@@ -15,18 +15,36 @@ import re
 import urllib.request
 import urllib.error
 from datetime import datetime
+from pathlib import Path
 
 
 class OllamaRunner:
     """Wrapper um die Ollama REST API fuer automatisierte Aufrufe."""
 
     def __init__(self, model="qwen3:4b", base_url="http://localhost:11434",
-                 timeout=300, temperature=0.7, system_prompt=None):
+                 timeout=300, temperature=0.7, system_prompt=None,
+                 system_prompt_file=None, think=True):
         self.model = model
         self.base_url = base_url.rstrip("/")
         self.timeout = timeout
         self.temperature = temperature
-        self.system_prompt = system_prompt
+        self.think = think  # False = /no_think Suffix fuer schnellere Antworten
+
+        # System-Prompt: explizit > Datei > None
+        if system_prompt:
+            self.system_prompt = system_prompt
+        elif system_prompt_file:
+            self.system_prompt = self._load_prompt_file(system_prompt_file)
+        else:
+            self.system_prompt = None
+
+    @staticmethod
+    def _load_prompt_file(path):
+        """Laedt System-Prompt aus Textdatei."""
+        p = Path(path)
+        if p.exists():
+            return p.read_text(encoding="utf-8").strip()
+        return None
 
     def run(self, prompt, **overrides):
         """
@@ -39,10 +57,16 @@ class OllamaRunner:
         system = overrides.get("system_prompt", self.system_prompt)
         temperature = overrides.get("temperature", self.temperature)
         timeout = overrides.get("timeout", self.timeout)
+        think = overrides.get("think", self.think)
+
+        # /no_think: qwen3 Feature -- unterdrueckt Reasoning, schnellere Antwort
+        actual_prompt = prompt
+        if not think and "qwen" in model.lower():
+            actual_prompt = f"/no_think\n{prompt}"
 
         payload = {
             "model": model,
-            "prompt": prompt,
+            "prompt": actual_prompt,
             "stream": False,
             "options": {
                 "temperature": temperature,
