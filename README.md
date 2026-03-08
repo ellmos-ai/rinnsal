@@ -13,8 +13,10 @@ Extracted from [BACH](https://github.com/lukisch) -- a comprehensive agent syste
 ## Features
 
 - **Memory** -- Cross-agent shared memory with SQLite (facts, working memory, lessons learned, sessions)
+- **Tasks** -- Simple task management with priorities, status tracking, and agent assignment
 - **Connectors** -- Channel abstraction for Telegram, Discord, Home Assistant
 - **Automation** -- LLM agent chain orchestration ("Marble-Run": sequential agent chains with loops, handoff, shutdown conditions)
+- **Ollama** -- Local LLM runner for Ollama REST API (qwen3, mistral, etc.)
 - **Zero dependencies** -- Pure Python stdlib, no external packages required
 - **Python 3.10+**
 
@@ -38,6 +40,44 @@ api.lesson("UTF-8 Bug", "cp1252 Encoding", "PYTHONIOENCODING=utf-8", severity="h
 
 print(api.context())   # Kompakter Kontext fuer LLM-Prompts
 print(api.status())    # Statistiken
+```
+
+### Tasks
+
+```python
+from rinnsal.tasks import api as tasks
+
+tasks.init(agent_id="my-agent")
+tasks.add("Implement feature X", priority="high", description="Details here")
+tasks.add("Fix encoding bug", priority="critical")
+
+for t in tasks.list():
+    print(f"[{t['id']}] {t['title']} ({t['status']})")
+
+tasks.activate(1)      # Set to 'active'
+tasks.done(1)          # Mark as done
+print(tasks.next_task())  # Next open task by priority
+```
+
+### Ollama (Local LLM)
+
+```python
+from rinnsal.auto.ollama_runner import OllamaRunner
+
+ollama = OllamaRunner(model="qwen3:4b", base_url="http://localhost:11434")
+
+if ollama.health():
+    result = ollama.run("Explain this code")
+    print(result["output"])
+
+    # Chat with message history
+    result = ollama.chat([
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Hello!"}
+    ])
+    print(result["output"])
+
+print(ollama.available_models())  # List installed models
 ```
 
 ### Connectors
@@ -73,6 +113,20 @@ rinnsal memory fact system os "Win 11"   # Fakt speichern
 rinnsal memory facts --json              # Alle Fakten (JSON)
 rinnsal memory note "Meine Notiz"        # Notiz speichern
 rinnsal memory context                   # LLM-Kontext generieren
+
+# Tasks
+rinnsal task add "My task" -p high          # Create task (critical/high/medium/low)
+rinnsal task add "Bug fix" -d "Details"     # With description
+rinnsal task list                           # Open/active tasks
+rinnsal task list --all                     # Including done/cancelled
+rinnsal task list --json                    # JSON output
+rinnsal task show 1                         # Task details
+rinnsal task done 1                         # Mark as done
+rinnsal task activate 1                     # Set to active
+rinnsal task cancel 1                       # Cancel task
+rinnsal task reopen 1                       # Reopen done/cancelled
+rinnsal task delete 1                       # Delete permanently
+rinnsal task count                          # Count by status
 
 # Chains (Automation)
 rinnsal chain list                       # Ketten auflisten
@@ -114,8 +168,9 @@ Beispiel-Config: siehe `config/rinnsal.example.json`
 ```
 rinnsal/
 ├── memory/        # SQLite-based cross-agent memory (from USMC)
+├── tasks/         # Task management with SQLite (priorities, status)
 ├── connectors/    # Messaging channel abstraction (from BACH)
-├── auto/          # LLM agent chain orchestration (from llmauto)
+├── auto/          # LLM agent chain orchestration + OllamaRunner
 └── shared/        # Config loader, event bus
 ```
 
