@@ -1,34 +1,34 @@
 <p align="center">
-  <img src="assets/ellmos-logo.jpg" alt="Rinnsal logo" width="300">
+  <img src="assets/ellmos-logo.jpg" alt="Rinnsal Logo" width="300">
 </p>
 
 # Rinnsal
 
-**🇩🇪 [Deutsche Version](README_de.md)**
+**🇬🇧 [English Version](README.md)**
 
-*The trickle -- lightweight LLM agent infrastructure by [ellmos-ai](https://github.com/ellmos-ai).*
+*Das Rinnsal -- leichtgewichtige LLM-Agent-Infrastruktur von [ellmos-ai](https://github.com/ellmos-ai).*
 
-Lightweight LLM agent infrastructure: **Memory**, **Connectors**, **Automation**.
+Leichtgewichtige LLM-Agent-Infrastruktur: **Memory**, **Connectors**, **Automation**.
 
-Extracted from [BACH](https://github.com/lukisch) -- a comprehensive agent system with 73 handlers, 322 tools, and 24 protocols. Rinnsal takes only the infrastructure layer and leaves agent/skill/tool logic to the LLM providers.
+Extrahiert aus [BACH](https://github.com/lukisch) -- einem umfassenden Agent-System mit 73 Handlern, 322 Tools und 24 Protokollen. Rinnsal übernimmt nur die Infrastrukturschicht und überlässt Agent-/Skill-/Tool-Logik den LLM-Anbietern.
 
 ## Features
 
-- **Memory** -- Cross-agent shared memory with SQLite (facts, working memory, lessons learned, sessions)
-- **Tasks** -- Simple task management with priorities, status tracking, and agent assignment
-- **Connectors** -- Channel abstraction for Telegram, Discord, Home Assistant
-- **Automation** -- LLM agent chain orchestration ("Marble-Run": sequential agent chains with loops, handoff, shutdown conditions)
-- **Ollama** -- Local LLM runner for Ollama REST API (qwen3, mistral, etc.)
-- **Zero dependencies** -- Pure Python stdlib, no external packages required
+- **Memory** -- Agentenübergreifender gemeinsamer Speicher mit SQLite (Fakten, Arbeitsspeicher, Lessons Learned, Sessions)
+- **Tasks** -- Einfaches Aufgabenmanagement mit Prioritäten, Status-Tracking und Agent-Zuweisung
+- **Connectors** -- Kanalabstraktion für Telegram, Discord, Home Assistant
+- **Automation** -- LLM-Agent-Kettenorchestrierung ("Marble-Run": sequentielle Agent-Ketten mit Schleifen, Übergabe, Abbruchbedingungen)
+- **Ollama** -- Lokaler LLM-Runner für die Ollama REST API (qwen3, mistral, etc.)
+- **Keine Abhängigkeiten** -- Reines Python stdlib, keine externen Pakete nötig
 - **Python 3.10+**
 
-## Install
+## Installation
 
 ```bash
 pip install -e .
 ```
 
-## Quick Start
+## Schnellstart
 
 ### Memory
 
@@ -61,7 +61,7 @@ tasks.done(1)          # Mark as done
 print(tasks.next_task())  # Next open task by priority
 ```
 
-### Ollama (Local LLM)
+### Ollama (Lokales LLM)
 
 ```python
 from rinnsal.auto.ollama_runner import OllamaRunner
@@ -72,14 +72,14 @@ if ollama.health():
     result = ollama.run("Explain this code")
     print(result["output"])
 
-    # Chat with message history
+    # Chat mit Nachrichtenverlauf
     result = ollama.chat([
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "Hello!"}
     ])
     print(result["output"])
 
-print(ollama.available_models())  # List installed models
+print(ollama.available_models())  # Installierte Modelle auflisten
 ```
 
 ### Connectors
@@ -117,18 +117,18 @@ rinnsal memory note "Meine Notiz"        # Notiz speichern
 rinnsal memory context                   # LLM-Kontext generieren
 
 # Tasks
-rinnsal task add "My task" -p high          # Create task (critical/high/medium/low)
-rinnsal task add "Bug fix" -d "Details"     # With description
-rinnsal task list                           # Open/active tasks
-rinnsal task list --all                     # Including done/cancelled
-rinnsal task list --json                    # JSON output
-rinnsal task show 1                         # Task details
-rinnsal task done 1                         # Mark as done
-rinnsal task activate 1                     # Set to active
-rinnsal task cancel 1                       # Cancel task
-rinnsal task reopen 1                       # Reopen done/cancelled
-rinnsal task delete 1                       # Delete permanently
-rinnsal task count                          # Count by status
+rinnsal task add "My task" -p high          # Task erstellen (critical/high/medium/low)
+rinnsal task add "Bug fix" -d "Details"     # Mit Beschreibung
+rinnsal task list                           # Offene/aktive Tasks
+rinnsal task list --all                     # Inklusive erledigte/abgebrochene
+rinnsal task list --json                    # JSON-Ausgabe
+rinnsal task show 1                         # Task-Details
+rinnsal task done 1                         # Als erledigt markieren
+rinnsal task activate 1                     # Auf aktiv setzen
+rinnsal task cancel 1                       # Task abbrechen
+rinnsal task reopen 1                       # Erledigte/abgebrochene wieder öffnen
+rinnsal task delete 1                       # Dauerhaft löschen
+rinnsal task count                          # Anzahl nach Status
 
 # Chains (Automation)
 rinnsal chain list                       # Ketten auflisten
@@ -148,14 +148,14 @@ rinnsal connect send telegram ID "Text"  # Nachricht senden
 rinnsal pipe "Erklaere diesen Code"      # Einzelner LLM-Aufruf
 ```
 
-## Configuration
+## Konfiguration
 
 Rinnsal sucht die Config in folgender Reihenfolge:
 
 1. `./rinnsal.json` (aktuelles Verzeichnis)
 2. `~/.rinnsal/config.json` (User-Home)
 
-Secrets werden ausschliesslich via ENV-Variablen gesetzt:
+Secrets werden ausschließlich via Umgebungsvariablen gesetzt:
 
 ```bash
 export RINNSAL_TELEGRAM_TOKEN="123456:ABC-DEF..."
@@ -165,28 +165,28 @@ export RINNSAL_HA_TOKEN="..."
 
 Beispiel-Config: siehe `config/rinnsal.example.json`
 
-## Architecture
+## Architektur
 
 ```
 rinnsal/
-├── memory/        # SQLite-based cross-agent memory (from USMC)
-├── tasks/         # Task management with SQLite (priorities, status)
-├── connectors/    # Messaging channel abstraction (from BACH)
-├── auto/          # LLM agent chain orchestration + OllamaRunner
-└── shared/        # Config loader, event bus
+├── memory/        # SQLite-basierter agentenübergreifender Speicher (aus USMC)
+├── tasks/         # Aufgabenverwaltung mit SQLite (Prioritäten, Status)
+├── connectors/    # Messaging-Kanalabstraktion (aus BACH)
+├── auto/          # LLM-Agent-Kettenorchestrierung + OllamaRunner
+└── shared/        # Config-Loader, Event Bus
 ```
 
-### Component Integration
+### Komponentenintegration
 
 ```
-Memory <-> Auto:       Chains read/write context from Memory (opt-in)
-Connectors <-> Auto:   Telegram notifications via Connector
-Event Bus:             Decoupling layer between components
+Memory <-> Auto:       Chains lesen/schreiben Kontext aus Memory (opt-in)
+Connectors <-> Auto:   Telegram-Benachrichtigungen via Connector
+Event Bus:             Entkopplungsschicht zwischen Komponenten
 ```
 
-## See Also: OpenClaw
+## Siehe auch: OpenClaw
 
-How does Rinnsal compare to [OpenClaw](https://github.com/openclaw/openclaw), the popular open-source AI assistant (274K+ stars)?
+Wie schneidet Rinnsal im Vergleich zu [OpenClaw](https://github.com/openclaw/openclaw) ab, dem populären Open-Source-KI-Assistenten (274K+ Stars)?
 
 | | **Rinnsal** | **OpenClaw** |
 |---|---|---|
@@ -197,8 +197,8 @@ How does Rinnsal compare to [OpenClaw](https://github.com/openclaw/openclaw), th
 | **Dependencies** | Zero -- pure Python stdlib | Node.js 22+, numerous npm packages |
 | **License** | MIT | MIT |
 
-**In short:** Rinnsal and OpenClaw share the same connector gateway pattern, but take opposite approaches to complexity. Rinnsal stays minimal with zero dependencies and structured memory. OpenClaw goes all-in with native apps, voice, and a massive community. Different starting points, potentially converging on connectors.
+**Kurzfassung:** Rinnsal und OpenClaw teilen dasselbe Connector-Gateway-Muster, verfolgen aber entgegengesetzte Ansätze bei der Komplexität. Rinnsal bleibt minimal mit null Abhängigkeiten und strukturiertem Speicher. OpenClaw setzt auf native Apps, Sprachsteuerung und eine große Community. Unterschiedliche Ausgangspunkte, die bei den Connectors potenziell konvergieren.
 
-## License
+## Lizenz
 
 MIT -- Lukas Geiger
