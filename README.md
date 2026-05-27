@@ -10,7 +10,7 @@
 
 Lightweight LLM agent infrastructure: **Memory**, **Connectors**, **Automation**.
 
-Extracted from [BACH](https://github.com/lukisch) -- a comprehensive agent system with 73 handlers, 322 tools, and 24 protocols. Rinnsal takes only the infrastructure layer and leaves agent/skill/tool logic to the LLM providers.
+Extracted from [BACH](https://github.com/ellmos-ai/bach) -- a comprehensive agent system with 73 handlers, 322 tools, and 24 protocols. Rinnsal takes only the infrastructure layer and leaves agent/skill/tool logic to the LLM providers.
 
 ## Features
 
