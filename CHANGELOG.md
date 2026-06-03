@@ -2,7 +2,7 @@
 
 ## 0.1.0 (2026-03-01)
 
-Initial release. Extracted from [BACH](https://github.com/lukisch) agent system.
+Initial release. Extracted from the [BACH](https://github.com/ellmos-ai/bach) agent system.
 
 ### Features
 

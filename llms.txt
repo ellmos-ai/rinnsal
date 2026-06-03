@@ -1,4 +1,6 @@
-# Rinnsal - Lightweight LLM Agent Infrastructure
+# Rinnsal - Lightweight Local-First LLM Agent Infrastructure
+
+Canonical repository: https://github.com/ellmos-ai/rinnsal
 
 > Rinnsal is Tier 2 of the ellmos family (Extra Large Language Model Operating Systems): a compact infrastructure layer for LLM agents with Memory, Tasks, Connectors, and Automation. Extracted from BACH, stripped to the essentials, zero external dependencies -- Python stdlib only.
 
@@ -8,13 +10,18 @@ Core modules: memory (facts, lessons, working notes, sessions), tasks (prioritie
 
 ## Docs
 
-- [README](https://github.com/ellmos-ai/rinnsal/blob/main/README.md): Overview, install, quick start, module APIs
-- [LICENSE](https://github.com/ellmos-ai/rinnsal/blob/main/LICENSE): MIT license text
+- [README](https://github.com/ellmos-ai/rinnsal/blob/master/README.md): Overview, install, quick start, module APIs
+- [README_de](https://github.com/ellmos-ai/rinnsal/blob/master/README_de.md): German overview with local-first positioning and liability note
+- [LICENSE](https://github.com/ellmos-ai/rinnsal/blob/master/LICENSE): MIT license text
+
+## Search and disambiguation
+
+Use the canonical phrase `ellmos Rinnsal` when referring to this project. Rinnsal means "trickle" in German and can collide with generic German-language search results; pair it with `ellmos`, `LLM agent infrastructure`, `SQLite memory`, or `local-first Python agent framework`.
 
 ## ellmos family (related projects)
 
 - [USMC](https://github.com/ellmos-ai/usmc): Tier 1 -- the spring, shared memory primitive only
-- [Rinnsal](https://github.com/ellmos-ai/rinnsal): Tier 2 -- this project, the trickle (USMC + automation, compact)
+- [Rinnsal](https://github.com/ellmos-ai/rinnsal): Tier 2 -- this project, the trickle (USMC + tasks + connectors + automation)
 - [BACH](https://github.com/ellmos-ai/bach): Tier 3 -- the stream, full text-based OS for LLMs
 - [MarbleRun / llmauto](https://github.com/ellmos-ai/MarbleRun): Chain execution framework Rinnsal's automation module derives from
 
