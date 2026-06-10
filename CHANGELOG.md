@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- **i18n module** (`rinnsal/i18n`): Internationalization infrastructure with JSON-based translation strings (`locales/translations.json`). Supports de, en, es, zh, ja, ru with fallback chain (en → de → key). CLI output starts using `t()` for translatable strings.
+
 ## 0.1.0 (2026-03-01)
 
 Initial release. Extracted from the [BACH](https://github.com/ellmos-ai/bach) agent system.

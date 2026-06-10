@@ -18,6 +18,8 @@ import json
 import sys
 from typing import Optional
 
+from rinnsal.i18n import t
+
 
 def cmd_version(args) -> int:
     from rinnsal import __version__
@@ -27,7 +29,7 @@ def cmd_version(args) -> int:
 
 def cmd_status(args) -> int:
     """Gesamtstatus: Memory + Chains + Connectors."""
-    print("Rinnsal Status")
+    print(t('status.title'))
     print("=" * 40)
 
     # Memory
