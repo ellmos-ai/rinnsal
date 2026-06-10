@@ -25,7 +25,7 @@ import urllib.request
 import urllib.error
 from datetime import datetime
 from pathlib import Path
-from typing import List, Optional, Callable, Tuple
+from typing import Any, List, Optional, Callable, Tuple
 
 from .base import BaseConnector, ConnectorConfig, ConnectorStatus, Message
 
@@ -250,7 +250,7 @@ class TelegramConnector(BaseConnector):
 
     # --- Internal ---
 
-    def _api_call(self, method: str, params: dict = None, retries: int = 3, timeout: int = 15) -> any:
+    def _api_call(self, method: str, params: dict = None, retries: int = 3, timeout: int = 15) -> Any:
         """Telegram Bot API aufrufen (stdlib urllib, mit Retry)."""
         url = self.API_BASE.format(token=self._bot_token, method=method)
 
