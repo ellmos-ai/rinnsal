@@ -27,6 +27,7 @@ Use it when BACH is too large, USMC is too small, and you want a minimal local P
 - **Connectors** -- Channel abstraction for Telegram, Discord, Home Assistant
 - **Automation** -- LLM agent chain orchestration ("Marble-Run": sequential agent chains with loops, handoff, shutdown conditions)
 - **Ollama** -- Local LLM runner for Ollama REST API (qwen3, mistral, etc.)
+- **i18n** -- Internationalization with JSON translation strings (de, en, es, zh, ja, ru)
 - **Zero dependencies** -- Pure Python stdlib, no external packages required
 - **Python 3.10+**
 

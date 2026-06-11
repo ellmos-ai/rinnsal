@@ -28,3 +28,27 @@ Use the canonical phrase `ellmos Rinnsal` when referring to this project. Rinnsa
 ## Optional
 
 - [GitHub Issues](https://github.com/ellmos-ai/rinnsal/issues): Bug reports and feature requests
+
+## Audience
+
+- Developers building local-first LLM agent infrastructure in Python without external dependencies
+- Teams extracting memory, task management, or connector layers from larger agent systems like BACH
+- Researchers and hobbyists who want a minimal agent stack on top of Ollama or Claude CLI
+- Python developers who need SQLite-backed cross-agent shared memory in their own projects
+- ellmos ecosystem contributors extending Rinnsal's connectors or automation chains
+
+## Search Phrases
+
+```
+ellmos Rinnsal
+Rinnsal LLM agent infrastructure
+local-first LLM agent memory Python
+Python stdlib agent framework zero dependencies
+SQLite memory for LLM agents
+lightweight agent connector gateway
+BACH Rinnsal ellmos agent stack
+local LLM automation Python
+Ollama agent runner Python
+```
+
+## Last-checked: 2026-06-11
