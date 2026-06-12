@@ -128,6 +128,38 @@ class TestAutoConfig(unittest.TestCase):
         self.assertFalse(link['until_full'])
 
 
+class TestHomePlaceholders(unittest.TestCase):
+    def test_windows_home(self):
+        from rinnsal.auto.chain import _home_placeholders
+        native, bash = _home_placeholders("C:\\Users\\Foo\\")
+        self.assertEqual(native, "C:\\Users\\Foo")
+        self.assertEqual(bash, "/c/Users/Foo")
+
+    def test_windows_home_uppercase_drive(self):
+        from rinnsal.auto.chain import _home_placeholders
+        native, bash = _home_placeholders("D:\\Home\\Bar")
+        self.assertEqual(native, "D:\\Home\\Bar")
+        self.assertEqual(bash, "/d/Home/Bar")
+
+    def test_posix_home(self):
+        from rinnsal.auto.chain import _home_placeholders
+        native, bash = _home_placeholders("/home/foo/")
+        self.assertEqual(native, "/home/foo")
+        self.assertEqual(bash, "/home/foo")
+
+    def test_macos_home(self):
+        from rinnsal.auto.chain import _home_placeholders
+        native, bash = _home_placeholders("/Users/lukas")
+        self.assertEqual(native, "/Users/lukas")
+        self.assertEqual(bash, "/Users/lukas")
+
+    def test_posix_path_with_colon_not_treated_as_drive(self):
+        from rinnsal.auto.chain import _home_placeholders
+        native, bash = _home_placeholders("/home/we:ird")
+        self.assertEqual(native, "/home/we:ird")
+        self.assertEqual(bash, "/home/we:ird")
+
+
 class TestPathNormalization(unittest.TestCase):
     def test_no_hardcoded_homes(self):
         # Ohne Config/ENV duerfen keine Home-Pfade bekannt sein (Privacy).

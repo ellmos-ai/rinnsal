@@ -22,6 +22,24 @@ from .state import ChainState
 from ..shared.config import get_rinnsal_dir
 
 
+def _home_placeholders(home: str) -> tuple:
+    """Liefert (nativer Home-Pfad, Bash-Variante) fuer Prompt-Platzhalter.
+
+    Windows: 'C:\\Users\\Foo\\' -> ('C:\\Users\\Foo', '/c/Users/Foo')
+    POSIX:   '/home/foo/'       -> ('/home/foo', '/home/foo')
+
+    Nutzt str.partition statt split, damit POSIX-Pfade ohne ':'
+    keinen ValueError ausloesen.
+    """
+    home = home.rstrip("\\/")
+    drive, sep, rest = home.partition(":")
+    if sep and len(drive) == 1 and drive.isalpha():
+        home_bash = "/" + drive.lower() + rest.replace("\\", "/")
+    else:
+        home_bash = home.replace("\\", "/")
+    return home, home_bash
+
+
 def _get_log_dir() -> Path:
     """Gibt das Log-Verzeichnis zurueck."""
     log_dir = get_rinnsal_dir() / "logs"
@@ -195,10 +213,8 @@ def run_chain(chain_name, background=False):
 
                 # Prompt aufloesen + {HOME}/{BASH_HOME} ersetzen
                 prompt_text = resolve_prompt(link, config)
-                home_win = _ACTUAL_HOME.rstrip(os.sep)
-                drive, rest = home_win.split(":", 1)
-                home_bash = "/" + drive.lower() + rest.replace("\\", "/")
-                prompt_text = prompt_text.replace("{HOME}", home_win)
+                home_native, home_bash = _home_placeholders(_ACTUAL_HOME)
+                prompt_text = prompt_text.replace("{HOME}", home_native)
                 prompt_text = prompt_text.replace("{BASH_HOME}", home_bash)
 
                 if link.get("until_full", False):
