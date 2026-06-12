@@ -192,6 +192,7 @@ rinnsal/
 |-- tasks/         # Aufgabenverwaltung mit SQLite (Prioritäten, Status)
 |-- connectors/    # Messaging-Kanalabstraktion (aus BACH)
 |-- auto/          # LLM-Agent-Kettenorchestrierung + OllamaRunner
+|-- i18n/          # Internationalisierung (JSON-Katalog, experimentell)
 `-- shared/        # Config-Loader, Event Bus
 ```
 

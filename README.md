@@ -192,6 +192,7 @@ rinnsal/
 |-- tasks/         # Task management with SQLite (priorities, status)
 |-- connectors/    # Messaging channel abstraction (from BACH)
 |-- auto/          # LLM agent chain orchestration + OllamaRunner
+|-- i18n/          # Internationalization (JSON catalog, experimental)
 `-- shared/        # Config loader, event bus
 ```
 

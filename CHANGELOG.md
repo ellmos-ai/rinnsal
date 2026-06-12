@@ -4,11 +4,20 @@
 
 ### Added
 
+- **Tasks module** (`rinnsal/tasks`): SQLite-based task management (statuses open/active/done/cancelled, priorities, tags) sharing the database with the memory system. `TaskClient`, high-level singleton API, and CLI commands `rinnsal task add|list|show|done|activate|cancel|reopen|delete|count`. Tasks are also shown in `rinnsal status`.
+- **OllamaRunner** (`rinnsal/auto/ollama_runner.py`): runner for local Ollama models alongside `ClaudeRunner`.
 - GitHub Actions smoke workflow for Python 3.10, 3.11, 3.12, and 3.13 with unittest discovery and compileall.
-- **i18n module** (`rinnsal/i18n`): Internationalization infrastructure with JSON-based translation strings (`locales/translations.json`). Supports de, en, es, zh, ja, ru with fallback chain (en → de → key). CLI output starts using `t()` for translatable strings.
+- **i18n module** (`rinnsal/i18n`): Internationalization infrastructure with JSON-based translation strings. Supports de, en, es, zh, ja, ru with fallback chain (en → de → key). CLI output starts using `t()` for translatable strings.
+
+### Changed
+
+- Default database path is now `~/.rinnsal/rinnsal.db` instead of `rinnsal.db` in the current working directory. Override via the `RINNSAL_DB` environment variable or the `memory.db_path` config key; explicit `--db`/`db_path` arguments keep precedence.
+- Known user home paths for chain config normalization are no longer hardcoded; they are read from the config key `auto.known_user_homes` or the `RINNSAL_KNOWN_HOMES` environment variable.
 
 ### Fixed
 
+- `rinnsal chain start` no longer crashes on Linux/macOS: the `{HOME}`/`{BASH_HOME}` placeholder substitution assumed a Windows drive letter and raised `ValueError` on POSIX home paths.
+- `translations.json` is now packaged inside `rinnsal.i18n` (moved from the repo-root `locales/` directory) and loaded via `importlib.resources`, so translations work for pip installs and the PyInstaller build. A legacy repo-root fallback remains for old checkouts.
 - `rinnsal/connectors/telegram.py`: Corrected type hint `any` → `Any` (import from `typing`); lowercase `any` resolves to the builtin, not the type hint.
 
 ## 0.1.0 (2026-03-01)
