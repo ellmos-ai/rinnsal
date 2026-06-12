@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 """Tests fuer rinnsal.auto"""
+import os
 import unittest
 import tempfile
 import shutil
 from pathlib import Path
+from unittest import mock
 
 from rinnsal.auto.runner import ClaudeRunner
 from rinnsal.auto.state import ChainState
+from rinnsal.auto import config as auto_config
 from rinnsal.auto.config import DEFAULT_CHAIN_CONFIG, DEFAULT_LINK, new_link
 
 
@@ -123,6 +126,35 @@ class TestAutoConfig(unittest.TestCase):
         self.assertEqual(link['role'], 'reviewer')
         self.assertEqual(link['model'], 'claude-opus-4-6')
         self.assertFalse(link['until_full'])
+
+
+class TestPathNormalization(unittest.TestCase):
+    def test_no_hardcoded_homes(self):
+        # Ohne Config/ENV duerfen keine Home-Pfade bekannt sein (Privacy).
+        with mock.patch.object(auto_config, "load_config", return_value={}), \
+             mock.patch.dict(os.environ, {"RINNSAL_KNOWN_HOMES": ""}):
+            self.assertEqual(auto_config._get_known_user_homes(), [])
+
+    def test_known_homes_from_env(self):
+        with mock.patch.object(auto_config, "load_config", return_value={}), \
+             mock.patch.dict(os.environ, {"RINNSAL_KNOWN_HOMES": "C:\\Users\\Alice\\"}):
+            self.assertEqual(auto_config._get_known_user_homes(), ["C:\\Users\\Alice\\"])
+
+    def test_known_homes_from_config(self):
+        cfg = {"auto": {"known_user_homes": ["/home/alice/"]}}
+        with mock.patch.object(auto_config, "load_config", return_value=cfg), \
+             mock.patch.dict(os.environ, {"RINNSAL_KNOWN_HOMES": ""}):
+            self.assertEqual(auto_config._get_known_user_homes(), ["/home/alice/"])
+
+    def test_normalize_replaces_known_home(self):
+        obj = {"path": "C:\\Users\\Alice\\project\\x.txt", "n": 1}
+        result = auto_config._normalize_paths(obj, known_homes=["C:\\Users\\Alice\\"])
+        self.assertEqual(result["path"], auto_config._ACTUAL_HOME + "project\\x.txt")
+        self.assertEqual(result["n"], 1)
+
+    def test_normalize_without_known_homes_is_noop(self):
+        obj = "C:\\Users\\Somebody\\foo"
+        self.assertEqual(auto_config._normalize_paths(obj, known_homes=[]), obj)
 
 
 if __name__ == '__main__':

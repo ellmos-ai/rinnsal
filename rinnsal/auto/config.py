@@ -16,11 +16,32 @@ from copy import deepcopy
 
 from ..shared.config import get_rinnsal_dir, load_config
 
-# Bekannte User-Home-Pfade fuer Cross-Machine Normalisierung.
-_KNOWN_USER_HOMES = [
-    "C:\\Users\\User\\",
-]
 _ACTUAL_HOME = str(Path.home()) + os.sep
+
+
+def _get_known_user_homes() -> list:
+    """Bekannte User-Home-Pfade fuer Cross-Machine Normalisierung.
+
+    Es sind bewusst KEINE Pfade hart kodiert. Quellen:
+    1. Config-Key "auto" -> "known_user_homes" (Liste von Strings,
+       rinnsal.json ist gitignored)
+    2. ENV-Variable RINNSAL_KNOWN_HOMES (mehrere Pfade via os.pathsep)
+
+    Eintraege sollten den abschliessenden Pfadtrenner enthalten,
+    z. B. "C:\\Users\\Alice\\" oder "/home/alice/".
+    """
+    homes = []
+    try:
+        auto = load_config().get("auto", {})
+        for entry in auto.get("known_user_homes", []) or []:
+            if isinstance(entry, str) and entry:
+                homes.append(entry)
+    except Exception:
+        pass
+    for entry in os.environ.get("RINNSAL_KNOWN_HOMES", "").split(os.pathsep):
+        if entry:
+            homes.append(entry)
+    return homes
 
 
 DEFAULT_CHAIN_CONFIG = {
@@ -87,17 +108,19 @@ def load_auto_config() -> dict:
     return auto
 
 
-def _normalize_paths(obj):
+def _normalize_paths(obj, known_homes=None):
     """Ersetzt bekannte User-Home-Pfade durch den aktuellen."""
+    if known_homes is None:
+        known_homes = _get_known_user_homes()
     if isinstance(obj, str):
-        for known in _KNOWN_USER_HOMES:
+        for known in known_homes:
             if known in obj and known != _ACTUAL_HOME:
                 obj = obj.replace(known, _ACTUAL_HOME)
         return obj
     elif isinstance(obj, dict):
-        return {k: _normalize_paths(v) for k, v in obj.items()}
+        return {k: _normalize_paths(v, known_homes) for k, v in obj.items()}
     elif isinstance(obj, list):
-        return [_normalize_paths(item) for item in obj]
+        return [_normalize_paths(item, known_homes) for item in obj]
     return obj
 
 

@@ -36,3 +36,6 @@ Thumbs.db
 # Server-spezifische Configs (Pfade, Credentials)
 rinnsal.json
 system_prompt.txt
+
+# Interne Aufgabenliste (User-Konvention: nicht im oeffentlichen Repo)
+TODO.md
