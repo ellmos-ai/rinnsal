@@ -27,17 +27,20 @@ from typing import Optional, List, Dict
 from .client import TaskClient
 
 _client: Optional[TaskClient] = None
-_default_db = "rinnsal.db"
 
 
 def init(
     db_path: Optional[str] = None,
     agent_id: str = "default"
 ) -> TaskClient:
-    """Initialisiert die globale Task-Instanz."""
+    """Initialisiert die globale Task-Instanz.
+
+    Ohne db_path gilt der Default des Clients
+    (ENV RINNSAL_DB > config memory.db_path > ~/.rinnsal/rinnsal.db).
+    """
     global _client
     _client = TaskClient(
-        db_path=db_path or _default_db,
+        db_path=db_path,
         agent_id=agent_id
     )
     return _client
@@ -47,7 +50,7 @@ def get_client() -> TaskClient:
     """Gibt die globale Client-Instanz zurueck (lazy init)."""
     global _client
     if _client is None:
-        _client = TaskClient(db_path=_default_db, agent_id="default")
+        _client = TaskClient(agent_id="default")
     return _client
 
 

@@ -45,7 +45,7 @@ def cmd_status(args) -> int:
     # Tasks
     try:
         from rinnsal.tasks.client import TaskClient
-        tc = TaskClient(db_path=args.db or "rinnsal.db")
+        tc = TaskClient(db_path=args.db)
         c = tc.count()
         print(f"  Tasks:   {c.get('open', 0)} offen, {c.get('active', 0)} aktiv, {c.get('done', 0)} erledigt")
     except Exception as e:
@@ -73,7 +73,7 @@ def cmd_memory(args) -> int:
     from rinnsal.memory.client import MemoryClient
 
     client = MemoryClient(
-        db_path=args.db or "rinnsal.db",
+        db_path=args.db,
         agent_id=args.agent or "cli"
     )
 
@@ -229,7 +229,7 @@ def cmd_task(args) -> int:
     from rinnsal.tasks.client import TaskClient
 
     client = TaskClient(
-        db_path=args.db or "rinnsal.db",
+        db_path=args.db,
         agent_id=args.agent or "cli"
     )
 
@@ -357,7 +357,7 @@ def main(argv: Optional[list] = None) -> int:
         prog='rinnsal',
         description='Rinnsal -- Lightweight LLM Agent Infrastructure'
     )
-    parser.add_argument('--db', help='Pfad zur Memory-DB')
+    parser.add_argument('--db', help='Pfad zur DB (Default: $RINNSAL_DB oder ~/.rinnsal/rinnsal.db)')
     parser.add_argument('--agent', help='Agent-ID')
 
     subparsers = parser.add_subparsers(dest='command')

@@ -177,6 +177,13 @@ export RINNSAL_HA_TOKEN="..."
 
 Example config: `config/rinnsal.example.json`.
 
+### Database location
+
+By default, Rinnsal stores its SQLite database at `~/.rinnsal/rinnsal.db`
+(the directory is created on demand). Override the default with the
+`RINNSAL_DB` environment variable or the `memory.db_path` config key.
+An explicit `--db` CLI option or `db_path` parameter always takes precedence.
+
 ## Architecture
 
 ```text

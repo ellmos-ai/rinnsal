@@ -4,7 +4,7 @@ TaskClient -- SQLite-basiertes Task-Management
 ================================================
 
 Einfaches Task-System fuer Rinnsal.
-Nutzt dieselbe DB wie das Memory-System (rinnsal.db).
+Nutzt dieselbe DB wie das Memory-System (Default: ~/.rinnsal/rinnsal.db).
 Zero external dependencies (nur stdlib).
 
 Author: Lukas Geiger
@@ -14,6 +14,8 @@ import sqlite3
 from pathlib import Path
 from typing import Optional, List, Dict
 from datetime import datetime
+
+from ..shared.config import get_default_db_path
 
 
 TASK_SCHEMA_SQL = """
@@ -44,7 +46,7 @@ class TaskClient:
     Task-Management Client mit eigener SQLite-Tabelle.
 
     Verwendung:
-        client = TaskClient()  # rinnsal.db im aktuellen Verzeichnis
+        client = TaskClient()  # Default: ~/.rinnsal/rinnsal.db (bzw. $RINNSAL_DB)
         client.add("Feature X implementieren", priority="high")
         tasks = client.list()
         client.done(1)
@@ -52,9 +54,11 @@ class TaskClient:
 
     def __init__(
         self,
-        db_path: str | Path = "rinnsal.db",
+        db_path: str | Path | None = None,
         agent_id: str = "default"
     ):
+        if db_path is None:
+            db_path = get_default_db_path()
         self._is_memory = str(db_path) == ':memory:'
         self.db_path = db_path if self._is_memory else Path(db_path)
         self.agent_id = agent_id

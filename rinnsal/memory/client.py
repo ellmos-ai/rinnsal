@@ -16,6 +16,7 @@ from typing import Optional, List, Dict
 from datetime import datetime
 
 from . import schema
+from ..shared.config import get_default_db_path
 
 
 class MemoryClient:
@@ -23,7 +24,7 @@ class MemoryClient:
     Cross-Agent Memory Client mit eigener SQLite-DB.
 
     Verwendung:
-        client = MemoryClient()  # rinnsal.db im aktuellen Verzeichnis
+        client = MemoryClient()  # Default: ~/.rinnsal/rinnsal.db (bzw. $RINNSAL_DB)
         client.add_fact("system", "os", "Windows 11", confidence=0.95)
         client.add_working("Aktueller Task: Feature implementieren")
         facts = client.get_facts()
@@ -42,9 +43,11 @@ class MemoryClient:
 
     def __init__(
         self,
-        db_path: str | Path = "rinnsal.db",
+        db_path: str | Path | None = None,
         agent_id: str = "default"
     ):
+        if db_path is None:
+            db_path = get_default_db_path()
         self._is_memory = str(db_path) == ':memory:'
         self.db_path = db_path if self._is_memory else Path(db_path)
         self.agent_id = agent_id

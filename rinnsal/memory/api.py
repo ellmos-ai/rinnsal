@@ -26,17 +26,20 @@ from typing import Optional, List, Dict
 from .client import MemoryClient
 
 _client: Optional[MemoryClient] = None
-_default_db = "rinnsal.db"
 
 
 def init(
     db_path: Optional[str] = None,
     agent_id: str = "default"
 ) -> MemoryClient:
-    """Initialisiert die globale Memory-Instanz."""
+    """Initialisiert die globale Memory-Instanz.
+
+    Ohne db_path gilt der Default des Clients
+    (ENV RINNSAL_DB > config memory.db_path > ~/.rinnsal/rinnsal.db).
+    """
     global _client
     _client = MemoryClient(
-        db_path=db_path or _default_db,
+        db_path=db_path,
         agent_id=agent_id
     )
     return _client
@@ -46,7 +49,7 @@ def get_client() -> MemoryClient:
     """Gibt die globale Client-Instanz zurueck (lazy init)."""
     global _client
     if _client is None:
-        _client = MemoryClient(db_path=_default_db, agent_id="default")
+        _client = MemoryClient(agent_id="default")
     return _client
 
 

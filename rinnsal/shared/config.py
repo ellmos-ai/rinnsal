@@ -15,7 +15,9 @@ from copy import deepcopy
 
 DEFAULT_CONFIG = {
     "memory": {
-        "db_path": "rinnsal.db",
+        # Leer = Standard-Aufloesung via get_default_db_path()
+        # (ENV RINNSAL_DB > config memory.db_path > ~/.rinnsal/rinnsal.db)
+        "db_path": "",
         "default_agent_id": "default",
     },
     "connectors": {
@@ -93,6 +95,26 @@ def get_rinnsal_dir() -> Path:
     rinnsal_dir = Path.home() / ".rinnsal"
     rinnsal_dir.mkdir(exist_ok=True)
     return rinnsal_dir
+
+
+def get_default_db_path() -> str:
+    """Loest den Default-Pfad zur Rinnsal-DB auf.
+
+    Reihenfolge:
+    1. ENV-Variable RINNSAL_DB
+    2. Config-Key memory.db_path (rinnsal.json / ~/.rinnsal/config.json)
+    3. ~/.rinnsal/rinnsal.db (Verzeichnis wird bei Bedarf angelegt)
+
+    Explizit uebergebene Pfade (--db, db_path-Parameter) haben immer Vorrang
+    und laufen nicht durch diese Funktion.
+    """
+    env_path = os.environ.get("RINNSAL_DB", "")
+    if env_path:
+        return str(Path(env_path).expanduser())
+    configured = load_config().get("memory", {}).get("db_path", "")
+    if configured:
+        return str(Path(configured).expanduser())
+    return str(get_rinnsal_dir() / "rinnsal.db")
 
 
 def save_config(config: dict, path: Path | None = None) -> Path:

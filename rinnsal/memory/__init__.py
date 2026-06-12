@@ -7,7 +7,7 @@ Based on USMC (United Shared Memory Client).
 
 Usage (Client):
     from rinnsal.memory import MemoryClient
-    client = MemoryClient(db_path="rinnsal.db", agent_id="opus")
+    client = MemoryClient(agent_id="opus")  # Default-DB: ~/.rinnsal/rinnsal.db
     client.add_fact("system", "os", "Windows 11")
 
 Usage (High-Level API):
