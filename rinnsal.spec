@@ -5,7 +5,7 @@ a = Analysis(
     ['launcher.py'],
     pathex=['..'],
     binaries=[],
-    datas=[],
+    datas=[('rinnsal/i18n/locales/translations.json', 'rinnsal/i18n/locales')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},

@@ -33,3 +33,6 @@ rinnsal = "rinnsal.cli:main"
 
 [tool.setuptools.packages.find]
 include = ["rinnsal*"]
+
+[tool.setuptools.package-data]
+"rinnsal.i18n" = ["locales/*.json"]

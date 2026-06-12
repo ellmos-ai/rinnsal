@@ -11,8 +11,10 @@ Verwendung:
 """
 
 import json
+import sys
+from importlib import resources
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 SUPPORTED_LANGUAGES = ['de', 'en', 'es', 'zh', 'ja', 'ru']
 DEFAULT_LANGUAGE = 'de'
@@ -20,23 +22,57 @@ FALLBACK_CHAIN = ['en', 'de']
 
 _current_lang: str = DEFAULT_LANGUAGE
 _translations: Dict[str, Dict[str, str]] = {}
-_translations_file: Path = Path(__file__).parent.parent.parent / "locales" / "translations.json"
+_loaded: bool = False
+
+# Legacy-Pfad (Repo-Root locales/) als Fallback fuer aeltere Checkouts.
+_LEGACY_TRANSLATIONS_FILE: Path = (
+    Path(__file__).resolve().parent.parent.parent / "locales" / "translations.json"
+)
+
+
+def _read_translations() -> Optional[str]:
+    """Liest translations.json als Text.
+
+    Suchreihenfolge:
+    1. PyInstaller-Bundle (sys._MEIPASS)
+    2. Paket-Daten via importlib.resources (pip install + Source-Checkout)
+    3. Legacy: locales/ im Repo-Root (Entwicklungsmodus, alte Checkouts)
+    """
+    if getattr(sys, "frozen", False):
+        bundled = (
+            Path(getattr(sys, "_MEIPASS", ""))
+            / "rinnsal" / "i18n" / "locales" / "translations.json"
+        )
+        if bundled.exists():
+            return bundled.read_text(encoding="utf-8")
+    try:
+        res = resources.files(__package__).joinpath("locales/translations.json")
+        if res.is_file():
+            return res.read_text(encoding="utf-8")
+    except Exception:
+        pass
+    if _LEGACY_TRANSLATIONS_FILE.exists():
+        return _LEGACY_TRANSLATIONS_FILE.read_text(encoding="utf-8")
+    return None
 
 
 def _load():
-    global _translations
-    if _translations_file.exists():
-        try:
-            with open(_translations_file, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-                _translations = {k: v for k, v in data.items() if not k.startswith('_')}
-        except Exception:
+    global _translations, _loaded
+    _loaded = True
+    try:
+        raw = _read_translations()
+        if raw is None:
             _translations = {}
+            return
+        data = json.loads(raw)
+        _translations = {k: v for k, v in data.items() if not k.startswith('_')}
+    except Exception:
+        _translations = {}
 
 
 def t(key: str, **kwargs) -> str:
     """Übersetzt einen Key. Fallback: en -> de -> Key selbst."""
-    if not _translations:
+    if not _loaded:
         _load()
 
     entry = _translations.get(key)
@@ -67,7 +103,7 @@ def get_supported_languages() -> List[str]:
 
 def get_missing(lang: str = None) -> Dict[str, List[str]]:
     """Gibt Keys ohne Übersetzung zurück."""
-    if not _translations:
+    if not _loaded:
         _load()
     if lang and lang in SUPPORTED_LANGUAGES:
         return {lang: [k for k, v in _translations.items() if not v.get(lang)]}
