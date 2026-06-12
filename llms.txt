@@ -51,4 +51,4 @@ local LLM automation Python
 Ollama agent runner Python
 ```
 
-## Last-checked: 2026-06-11
+## Last-checked: 2026-06-12

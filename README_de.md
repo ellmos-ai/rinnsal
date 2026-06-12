@@ -6,6 +6,8 @@
 
 **EN [English Version](README.md)**
 
+[![Rinnsal smoke tests](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
+
 *Das Rinnsal: eine leichtgewichtige, local-first LLM-Agent-Infrastrukturschicht von [ellmos-ai](https://github.com/ellmos-ai).*
 
 Rinnsal gibt kleinen autonomen Agentenprojekten die Grundschicht, die sie meist zuerst brauchen: **SQLite-Memory**, **Task-Status**, **Connector-I/O**, **Kettenautomatisierung** und optional einen **Ollama-Runner**. Es ist aus [BACH](https://github.com/ellmos-ai/bach) extrahiert, bleibt aber absichtlich kompakt: nur Python-Stdlib, keine externen Laufzeitabhängigkeiten, kein Hosted Service.
@@ -30,6 +32,8 @@ Nutze Rinnsal, wenn BACH zu groß, USMC zu klein ist und du eine minimale lokale
 - **i18n** -- Internationalisierung mit JSON-Übersetzungsstrings (de, en, es, zh, ja, ru)
 - **Keine Abhängigkeiten** -- reines Python stdlib, keine externen Pakete nötig
 - **Python 3.10+**
+
+Die CI führt die Paket-Smoke-Suite auf Python 3.10, 3.11, 3.12 und 3.13 aus.
 
 ## Installation
 

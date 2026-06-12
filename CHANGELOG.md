@@ -4,6 +4,7 @@
 
 ### Added
 
+- GitHub Actions smoke workflow for Python 3.10, 3.11, 3.12, and 3.13 with pytest and compileall.
 - **i18n module** (`rinnsal/i18n`): Internationalization infrastructure with JSON-based translation strings (`locales/translations.json`). Supports de, en, es, zh, ja, ru with fallback chain (en → de → key). CLI output starts using `t()` for translatable strings.
 
 ### Fixed

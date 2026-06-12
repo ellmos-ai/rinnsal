@@ -6,6 +6,8 @@
 
 **DE [Deutsche Version](README_de.md)**
 
+[![Rinnsal smoke tests](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
+
 *The trickle: a lightweight, local-first LLM agent infrastructure layer by [ellmos-ai](https://github.com/ellmos-ai).*
 
 Rinnsal gives small autonomous-agent projects the boring infrastructure they usually need first: **SQLite memory**, **task state**, **connector I/O**, **chain automation**, and an optional **Ollama runner**. It is extracted from [BACH](https://github.com/ellmos-ai/bach), but intentionally stays compact: Python stdlib only, no external runtime dependencies, no hosted service.
@@ -30,6 +32,8 @@ Use it when BACH is too large, USMC is too small, and you want a minimal local P
 - **i18n** -- Internationalization with JSON translation strings (de, en, es, zh, ja, ru)
 - **Zero dependencies** -- Pure Python stdlib, no external packages required
 - **Python 3.10+**
+
+CI runs the package smoke suite on Python 3.10, 3.11, 3.12, and 3.13.
 
 ## Install
 
