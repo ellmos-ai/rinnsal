@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" width="100%" height="100%">
+  <!-- Definitions of Gradients and Filters -->
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050811" />
+      <stop offset="40%" stop-color="#090f1d" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Left Glow (Stream Overlay) -->
+    <radialGradient id="glow-left" cx="240" cy="170" r="280">
+      <stop offset="0%" stop-color="#0e7490" stop-opacity="0.25" />
+      <stop offset="60%" stop-color="#0284c7" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#050811" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Right Glow (Text Overlay) -->
+    <radialGradient id="glow-right" cx="750" cy="170" r="450">
+      <stop offset="0%" stop-color="#1e1b4b" stop-opacity="0.15" />
+      <stop offset="70%" stop-color="#0f172a" stop-opacity="0.02" />
+      <stop offset="100%" stop-color="#050811" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Stream 1 Gradient -->
+    <linearGradient id="stream-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#94a3b8" stop-opacity="0.9" />
+      <stop offset="45%" stop-color="#38bdf8" stop-opacity="0.95" />
+      <stop offset="90%" stop-color="#22d3ee" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#a5f3fc" stop-opacity="0.9" />
+    </linearGradient>
+
+    <!-- Stream 2 Gradient -->
+    <linearGradient id="stream-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#64748b" stop-opacity="0.5" />
+      <stop offset="50%" stop-color="#0284c7" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#0d9488" stop-opacity="0.6" />
+    </linearGradient>
+
+    <!-- Ripple Gradient -->
+    <linearGradient id="ripple-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#22d3ee" />
+      <stop offset="100%" stop-color="#0d9488" />
+    </linearGradient>
+
+    <!-- Dew Drop Gradient -->
+    <radialGradient id="drop-grad" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
+      <stop offset="40%" stop-color="#e0f2fe" stop-opacity="0.75" />
+      <stop offset="80%" stop-color="#38bdf8" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0.1" />
+    </radialGradient>
+
+    <!-- Text Gradient -->
+    <linearGradient id="text-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="30%" stop-color="#f8fafc" />
+      <stop offset="70%" stop-color="#cbd5e1" />
+      <stop offset="100%" stop-color="#94a3b8" />
+    </linearGradient>
+
+    <!-- Subtle Glow Filter for Streams -->
+    <filter id="subtle-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style type="text/css">
+    <![CDATA[
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@400;600;700&display=swap');
+    .wordmark {
+      font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-weight: 700;
+      font-size: 78px;
+      fill: url(#text-grad);
+      letter-spacing: -0.03em;
+    }
+    .tagline {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-weight: 300;
+      font-size: 24px;
+      fill: #cbd5e1;
+      letter-spacing: 0.04em;
+    }
+    ]]>
+  </style>
+
+  <!-- Background -->
+  <rect width="1200" height="340" fill="url(#bg-grad)" rx="12" />
+  <rect width="1200" height="340" fill="url(#glow-left)" />
+  <rect width="1200" height="340" fill="url(#glow-right)" />
+
+  <!-- Puddle & Ripples (Lower Left Pool) -->
+  <ellipse cx="335" cy="268" rx="45" ry="10" stroke="url(#ripple-grad)" stroke-width="1.2" fill="none" opacity="0.35" />
+  <ellipse cx="340" cy="270" rx="25" ry="5.5" stroke="url(#ripple-grad)" stroke-width="0.8" fill="none" opacity="0.5" />
+  <ellipse cx="330" cy="266" rx="65" ry="14" stroke="url(#ripple-grad)" stroke-width="0.6" fill="none" opacity="0.18" />
+
+  <!-- Isolated Ripple (Mid-Left Droplet Ripple) -->
+  <ellipse cx="170" cy="180" rx="22" ry="5" stroke="url(#ripple-grad)" stroke-width="0.8" fill="none" opacity="0.3" />
+  <ellipse cx="170" cy="180" rx="10" ry="2.2" stroke="url(#ripple-grad)" stroke-width="0.5" fill="none" opacity="0.45" />
+
+  <!-- Stream Paths (The Trickle) -->
+  <!-- Glowing back-path for Stream 1 -->
+  <path d="M 140 80 C 170 100, 200 120, 190 150 C 180 180, 240 190, 250 220 C 260 250, 290 270, 330 270" 
+        stroke="#06b6d4" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.15" filter="url(#subtle-glow)" />
+
+  <!-- Main Stream 1 -->
+  <path d="M 140 80 C 170 100, 200 120, 190 150 C 180 180, 240 190, 250 220 C 260 250, 290 270, 330 270" 
+        stroke="url(#stream-grad-1)" stroke-width="3.5" stroke-linecap="round" fill="none" />
+
+  <!-- Secondary Stream 2 -->
+  <path d="M 160 95 C 185 110, 210 130, 200 160 C 190 190, 245 200, 265 230 C 285 260, 310 265, 345 260" 
+        stroke="url(#stream-grad-2)" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.75" />
+
+  <!-- High Fine Stream 3 (Fading top trickle) -->
+  <path d="M 125 110 C 140 115, 150 125, 145 135 C 140 145, 160 155, 165 165" 
+        stroke="#94a3b8" stroke-width="0.8" stroke-linecap="round" fill="none" opacity="0.25" />
+
+  <!-- Dew Drops / Water Droplets -->
+  <circle cx="140" cy="80" r="4" fill="url(#drop-grad)" stroke="rgba(255,255,255,0.4)" stroke-width="0.5" />
+  <circle cx="190" cy="150" r="3.2" fill="url(#drop-grad)" stroke="rgba(255,255,255,0.4)" stroke-width="0.5" />
+  <circle cx="250" cy="220" r="4.5" fill="url(#drop-grad)" stroke="rgba(255,255,255,0.4)" stroke-width="0.5" />
+  <circle cx="330" cy="270" r="5.5" fill="url(#drop-grad)" stroke="rgba(255,255,255,0.4)" stroke-width="0.5" />
+
+  <!-- Random Ambient Dew Drops -->
+  <circle cx="120" cy="150" r="2.5" fill="url(#drop-grad)" stroke="rgba(255,255,255,0.3)" stroke-width="0.5" />
+  <circle cx="210" cy="110" r="2.0" fill="url(#drop-grad)" stroke="rgba(255,255,255,0.3)" stroke-width="0.5" />
+  <circle cx="280" cy="200" r="3.0" fill="url(#drop-grad)" stroke="rgba(255,255,255,0.3)" stroke-width="0.5" />
+  <circle cx="220" cy="260" r="2.2" fill="url(#drop-grad)" stroke="rgba(255,255,255,0.3)" stroke-width="0.5" />
+
+  <!-- Typography / Text (Right Side) -->
+  <text x="520" y="172" class="wordmark">Rinnsal</text>
+  <text x="522" y="218" class="tagline">Lightweight LLM agent infrastructure</text>
+</svg>

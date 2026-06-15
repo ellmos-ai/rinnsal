@@ -1,14 +1,15 @@
-<p align="center">
-  <img src="assets/ellmos-logo.jpg" alt="Rinnsal logo" width="300">
-</p>
+<img src="assets/banner.svg" width="100%" alt="Rinnsal Banner">
 
 # Rinnsal
 
-**DE [Deutsche Version](README_de.md)**
+**[🇩🇪 Deutsche Version](README_de.md)** · **🇬🇧 English**
+
+> The trickle — lightweight, local-first LLM agent infrastructure by [ellmos-ai](https://github.com/ellmos-ai).
 
 [![Rinnsal smoke tests](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-*The trickle: a lightweight, local-first LLM agent infrastructure layer by [ellmos-ai](https://github.com/ellmos-ai).*
+**Quick links:** [Why Rinnsal?](#why-rinnsal) · [Quick Start](#quick-start) · [Docs](docs/) · [Changelog](CHANGELOG.md)
 
 Rinnsal gives small autonomous-agent projects the boring infrastructure they usually need first: **SQLite memory**, **task state**, **connector I/O**, **chain automation**, and an optional **Ollama runner**. It is extracted from [BACH](https://github.com/ellmos-ai/bach), but intentionally stays compact: Python stdlib only, no external runtime dependencies, no hosted service.
 

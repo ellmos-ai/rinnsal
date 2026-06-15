@@ -1,14 +1,15 @@
-<p align="center">
-  <img src="assets/ellmos-logo.jpg" alt="Rinnsal Logo" width="300">
-</p>
+<img src="assets/banner.svg" width="100%" alt="Rinnsal Banner">
 
 # Rinnsal
 
-**EN [English Version](README.md)**
+**[🇬🇧 English Version](README.md)** · **🇩🇪 Deutsch**
+
+> Das Rinnsal — leichtgewichtige, local-first LLM-Agent-Infrastruktur von [ellmos-ai](https://github.com/ellmos-ai).
 
 [![Rinnsal smoke tests](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
+[![Lizenz: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-*Das Rinnsal: eine leichtgewichtige, local-first LLM-Agent-Infrastrukturschicht von [ellmos-ai](https://github.com/ellmos-ai).*
+**Schnelleinstieg:** [Warum Rinnsal?](#warum-rinnsal) · [Quick Start](#quick-start) · [Docs](docs/) · [Changelog](CHANGELOG.md)
 
 Rinnsal gibt kleinen autonomen Agentenprojekten die Grundschicht, die sie meist zuerst brauchen: **SQLite-Memory**, **Task-Status**, **Connector-I/O**, **Kettenautomatisierung** und optional einen **Ollama-Runner**. Es ist aus [BACH](https://github.com/ellmos-ai/bach) extrahiert, bleibt aber absichtlich kompakt: nur Python-Stdlib, keine externen Laufzeitabhängigkeiten, kein Hosted Service.
 
