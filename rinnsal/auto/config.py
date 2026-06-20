@@ -25,7 +25,9 @@ def _get_known_user_homes() -> list:
     Es sind bewusst KEINE Pfade hart kodiert. Quellen:
     1. Config-Key "auto" -> "known_user_homes" (Liste von Strings,
        rinnsal.json ist gitignored)
-    2. ENV-Variable RINNSAL_KNOWN_HOMES (mehrere Pfade via os.pathsep)
+    2. ENV-Variable RINNSAL_KNOWN_HOMES (mehrere Pfade via ";" getrennt;
+       NICHT os.pathsep, da dieser auf POSIX ":" ist und Windows-
+       Laufwerksbuchstaben wie "C:\\..." zerschneiden wuerde)
 
     Eintraege sollten den abschliessenden Pfadtrenner enthalten,
     z. B. "C:\\Users\\Alice\\" oder "/home/alice/".
@@ -38,7 +40,7 @@ def _get_known_user_homes() -> list:
                 homes.append(entry)
     except Exception:
         pass
-    for entry in os.environ.get("RINNSAL_KNOWN_HOMES", "").split(os.pathsep):
+    for entry in os.environ.get("RINNSAL_KNOWN_HOMES", "").split(";"):
         if entry:
             homes.append(entry)
     return homes
