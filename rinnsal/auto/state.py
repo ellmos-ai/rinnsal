@@ -11,6 +11,7 @@ License: MIT
 """
 from pathlib import Path
 from datetime import datetime
+from warnings import warn
 
 from ..shared.config import get_rinnsal_dir
 
@@ -142,8 +143,18 @@ class ChainState:
             return True, "ALL_TASKS_DONE"
 
         deadline = config.get("deadline", "")
-        if deadline and datetime.now().date() > datetime.fromisoformat(deadline).date():
-            return True, f"DEADLINE_REACHED: {deadline}"
+        if deadline:
+            try:
+                deadline_date = datetime.fromisoformat(str(deadline)).date()
+            except (TypeError, ValueError):
+                warn(
+                    f"Ignoring invalid deadline value: {deadline!r}",
+                    RuntimeWarning,
+                    stacklevel=2,
+                )
+            else:
+                if datetime.now().date() > deadline_date:
+                    return True, f"DEADLINE_REACHED: {deadline}"
 
         runtime_hours = config.get("runtime_hours", 0)
         if runtime_hours > 0 and self.get_runtime_hours() >= runtime_hours:

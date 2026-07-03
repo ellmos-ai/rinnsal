@@ -17,6 +17,7 @@
 ### Fixed
 
 - `rinnsal chain start` no longer crashes on Linux/macOS: the `{HOME}`/`{BASH_HOME}` placeholder substitution assumed a Windows drive letter and raised `ValueError` on POSIX home paths.
+- Invalid chain `deadline` values no longer crash shutdown checks; they now emit a `RuntimeWarning` and the chain keeps evaluating the remaining stop conditions.
 - `translations.json` is now packaged inside `rinnsal.i18n` (moved from the repo-root `locales/` directory) and loaded via `importlib.resources`, so translations work for pip installs and the PyInstaller build. A legacy repo-root fallback remains for old checkouts.
 - `rinnsal/connectors/telegram.py`: Corrected type hint `any` → `Any` (import from `typing`); lowercase `any` resolves to the builtin, not the type hint.
 

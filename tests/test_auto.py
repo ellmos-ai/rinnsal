@@ -95,6 +95,13 @@ class TestChainState(unittest.TestCase):
         stop, reason = self.state.check_shutdown({"max_rounds": 100})
         self.assertFalse(stop)
 
+    def test_check_shutdown_invalid_deadline_warns_without_stopping(self):
+        self.state.set_status("RUNNING")
+        with self.assertWarnsRegex(RuntimeWarning, "Ignoring invalid deadline value"):
+            stop, reason = self.state.check_shutdown({"deadline": "not-a-date"})
+        self.assertFalse(stop)
+        self.assertEqual(reason, "")
+
     def test_skip_protection(self):
         self.state.write_handoff("Langer originaler Handoff mit vielen Details " * 20)
         original = self.state.get_handoff()
