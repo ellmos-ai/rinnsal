@@ -67,7 +67,10 @@ class MemoryClient:
         """Erstellt DB-Verbindung mit WAL-Mode."""
         if self._is_memory:
             if self._shared_conn is None:
-                self._shared_conn = sqlite3.connect(':memory:')
+                # check_same_thread=False: die eine geteilte Connection wird
+                # auch aus Poll-Threads (Telegram/Discord on_message) genutzt.
+                self._shared_conn = sqlite3.connect(
+                    ':memory:', check_same_thread=False)
                 self._shared_conn.execute("PRAGMA foreign_keys=ON")
             return self._shared_conn
         conn = sqlite3.connect(str(self.db_path))

@@ -126,8 +126,30 @@ def _normalize_paths(obj, known_homes=None):
     return obj
 
 
+def validate_chain_name(name) -> str:
+    """Validiert einen Chain-Namen fuer die Verwendung in Dateipfaden.
+
+    Chain-Namen werden in chains/-, logs/- und state/-Pfade eingesetzt.
+    Ohne Validierung erlauben Pfadtrenner und '..' Path Traversal (CWE-22),
+    z. B. `rinnsal chain start "../../../../andere_datei"`.
+    """
+    name = str(name)
+    if (
+        not name
+        or name != name.strip()
+        or name.startswith(".")
+        or any(sep in name for sep in ("/", "\\", ":"))
+    ):
+        raise ValueError(
+            f"Ungueltiger Chain-Name {name!r}: Pfadtrenner (/ \\ :), "
+            "fuehrende Punkte und Leerraum am Rand sind nicht erlaubt."
+        )
+    return name
+
+
 def load_chain(name) -> dict:
     """Laedt eine gespeicherte Chain-Config."""
+    name = validate_chain_name(name)
     chains_dir = _get_chains_dir()
     chain_file = chains_dir / f"{name}.json"
     if not chain_file.exists():
@@ -142,6 +164,7 @@ def load_chain(name) -> dict:
 
 def save_chain(name, config):
     """Speichert eine Chain-Config."""
+    name = validate_chain_name(name)
     chains_dir = _get_chains_dir()
     chains_dir.mkdir(exist_ok=True)
     chain_file = chains_dir / f"{name}.json"

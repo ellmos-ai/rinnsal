@@ -127,5 +127,25 @@ class TestMemoryAPI(unittest.TestCase):
         self.assertIn('facts_count', s)
 
 
+class TestMemoryClientThreading(unittest.TestCase):
+    def test_in_memory_client_usable_from_other_thread(self):
+        import threading
+        client = MemoryClient(db_path=":memory:", agent_id="test")
+        errors = []
+
+        def worker():
+            try:
+                client.add_fact("system", "thread", "ok")
+            except Exception as e:  # noqa: BLE001 - Testdiagnose
+                errors.append(e)
+
+        t = threading.Thread(target=worker)
+        t.start()
+        t.join()
+        self.assertEqual(errors, [])
+        facts = client.get_facts(category="system")
+        self.assertEqual(facts[0]['value'], "ok")
+
+
 if __name__ == '__main__':
     unittest.main()

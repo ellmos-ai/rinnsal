@@ -196,5 +196,31 @@ class TestPathNormalization(unittest.TestCase):
         self.assertEqual(auto_config._normalize_paths(obj, known_homes=[]), obj)
 
 
+class TestChainNameValidation(unittest.TestCase):
+    def test_accepts_normal_names(self):
+        for name in ("example", "mein-projekt", "kette_2", "Übersetzung",
+                     "a.b", "a..b"):
+            self.assertEqual(auto_config.validate_chain_name(name), name)
+
+    def test_rejects_traversal_and_separators(self):
+        for name in ("../evil", "..\\evil", "sub/chain", "sub\\chain",
+                     "C:evil", "..", ".", ".hidden", "", " spaced",
+                     "spaced "):
+            with self.assertRaises(ValueError, msg=name):
+                auto_config.validate_chain_name(name)
+
+    def test_load_chain_rejects_traversal_name(self):
+        with self.assertRaises(ValueError):
+            auto_config.load_chain("../../../../geheime_datei")
+
+    def test_chain_state_rejects_traversal_name(self):
+        tmp_dir = Path(tempfile.mkdtemp())
+        try:
+            with self.assertRaises(ValueError):
+                ChainState("../evil", base_dir=tmp_dir)
+        finally:
+            shutil.rmtree(tmp_dir, ignore_errors=True)
+
+
 if __name__ == '__main__':
     unittest.main()

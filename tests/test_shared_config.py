@@ -37,5 +37,17 @@ class TestDefaultDbPath(unittest.TestCase):
             self.assertTrue(result.startswith(str(Path.home())))
 
 
+class TestLoadConfigCacheIsolation(unittest.TestCase):
+    def test_mutating_returned_config_does_not_poison_cache(self):
+        with mock.patch.object(shared_config, "_find_config_file",
+                               return_value=None):
+            first = shared_config.load_config(force_reload=True)
+            first["connectors"]["telegram"]["owner_chat_id"] = "vergiftet"
+            second = shared_config.load_config()
+        self.assertIsNot(first, second)
+        self.assertEqual(
+            second["connectors"]["telegram"]["owner_chat_id"], "")
+
+
 if __name__ == '__main__':
     unittest.main()

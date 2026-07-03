@@ -18,8 +18,15 @@
 - Package version is now sourced dynamically from `rinnsal.__version__` (`dynamic = ["version"]` in `pyproject.toml`); the version is no longer maintained in two places.
 - Build requirement raised to `setuptools>=77`, matching the PEP-639 `license = "MIT"` string in `pyproject.toml` (older setuptools failed the build).
 
+### Security
+
+- Chain names are now validated (`validate_chain_name()`) before being used in `chains/`, `logs/`, and `state/` file paths. Previously, names containing path separators or `..` could read or write files outside those directories (path traversal, CWE-22), e.g. via `rinnsal chain start "../../other_file"`.
+
 ### Fixed
 
+- `load_config()` now returns a copy: mutating the returned dict no longer poisoned the process-wide config cache for later callers.
+- In-memory databases (`db_path=":memory:"`) are now usable from background threads: the shared connection is created with `check_same_thread=False`. This matters for connector poll threads (Telegram/Discord `on_message`) writing to memory/tasks.
+- Removed the dead config key `auto.telegram.bot_token_env` from defaults and the example config: it was never read — chain status updates always use the token of the `connectors.telegram` entry.
 - `rinnsal chain start` no longer crashes on Linux/macOS: the `{HOME}`/`{BASH_HOME}` placeholder substitution assumed a Windows drive letter and raised `ValueError` on POSIX home paths.
 - Invalid chain `deadline` values no longer crash shutdown checks; they now emit a `RuntimeWarning` and the chain keeps evaluating the remaining stop conditions.
 - `translations.json` is now packaged inside `rinnsal.i18n` (moved from the repo-root `locales/` directory) and loaded via `importlib.resources`, so translations work for pip installs and the PyInstaller build. A legacy repo-root fallback remains for old checkouts.

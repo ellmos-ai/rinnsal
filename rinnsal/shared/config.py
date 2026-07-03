@@ -42,9 +42,10 @@ DEFAULT_CONFIG = {
         "default_permission_mode": "dontAsk",
         "default_allowed_tools": ["Read", "Edit", "Write", "Bash", "Glob", "Grep"],
         "default_timeout_seconds": 1800,
+        # Token kommt immer vom connectors.telegram-Eintrag
+        # (auto.telegram nutzt load_connector("telegram")).
         "telegram": {
             "enabled": False,
-            "bot_token_env": "RINNSAL_TELEGRAM_TOKEN",
             "chat_id": "",
         },
     },
@@ -66,10 +67,14 @@ def _find_config_file() -> Path | None:
 
 
 def load_config(force_reload: bool = False) -> dict:
-    """Laedt die Rinnsal-Konfiguration (mit Cache)."""
+    """Laedt die Rinnsal-Konfiguration (mit Cache).
+
+    Gibt immer eine Kopie zurueck: Mutationen am Rueckgabewert duerfen den
+    Prozess-globalen Cache nicht vergiften.
+    """
     global _config_cache
     if _config_cache is not None and not force_reload:
-        return _config_cache
+        return deepcopy(_config_cache)
 
     config = deepcopy(DEFAULT_CONFIG)
     config_file = _find_config_file()
@@ -80,7 +85,7 @@ def load_config(force_reload: bool = False) -> dict:
         _deep_merge(config, user_config)
 
     _config_cache = config
-    return config
+    return deepcopy(config)
 
 
 def _deep_merge(base: dict, override: dict) -> dict:

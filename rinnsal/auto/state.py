@@ -20,10 +20,11 @@ class ChainState:
     """State-Manager fuer eine laufende Kette."""
 
     def __init__(self, chain_name, base_dir=None):
-        self.chain_name = chain_name
+        from .config import validate_chain_name
+        self.chain_name = validate_chain_name(chain_name)
         if base_dir is None:
             base_dir = get_rinnsal_dir()
-        self.state_dir = base_dir / "state" / chain_name
+        self.state_dir = base_dir / "state" / self.chain_name
         self.state_dir.mkdir(parents=True, exist_ok=True)
 
     @property

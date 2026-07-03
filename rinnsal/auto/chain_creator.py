@@ -99,7 +99,14 @@ def create_chain():
     print("  ===================================================")
     print()
 
-    chain_name = ask("Ketten-Name (z.B. mein-projekt)", "neue-kette")
+    from .config import validate_chain_name
+    while True:
+        chain_name = ask("Ketten-Name (z.B. mein-projekt)", "neue-kette")
+        try:
+            chain_name = validate_chain_name(chain_name)
+            break
+        except ValueError as e:
+            print(f"  {e}")
     description = ask("Beschreibung", "")
 
     print()
