@@ -39,3 +39,6 @@ system_prompt.txt
 
 # Interne Aufgabenliste (User-Konvention: nicht im oeffentlichen Repo)
 TODO.md
+
+# Interne Multi-Agenten-Koordination (LOCK-System)
+LOCK*.txt
