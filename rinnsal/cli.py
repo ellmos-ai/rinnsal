@@ -339,8 +339,9 @@ def _print_task_table(tasks):
 
 def cmd_pipe(args) -> int:
     from rinnsal.auto.runner import ClaudeRunner
+    from rinnsal.shared.config import DEFAULT_MODEL
     runner = ClaudeRunner(
-        model=getattr(args, 'model', None) or "claude-sonnet-4-6",
+        model=getattr(args, 'model', None) or DEFAULT_MODEL,
     )
     try:
         output = runner.pipe(args.prompt)

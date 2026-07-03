@@ -13,6 +13,9 @@ import os
 from pathlib import Path
 from copy import deepcopy
 
+# Zentrale Quelle fuer das Default-LLM (frueher an 4 Stellen dupliziert).
+DEFAULT_MODEL = "claude-sonnet-4-6"
+
 DEFAULT_CONFIG = {
     "memory": {
         # Leer = Standard-Aufloesung via get_default_db_path()
@@ -35,7 +38,7 @@ DEFAULT_CONFIG = {
         },
     },
     "auto": {
-        "default_model": "claude-sonnet-4-6",
+        "default_model": DEFAULT_MODEL,
         "default_permission_mode": "dontAsk",
         "default_allowed_tools": ["Read", "Edit", "Write", "Bash", "Glob", "Grep"],
         "default_timeout_seconds": 1800,

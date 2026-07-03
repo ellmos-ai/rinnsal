@@ -1,0 +1,7 @@
+owner: claude (Fable 5, Session 064f108c)
+created: 2026-07-03T12:00
+host: LAPTOP
+expires_after: 24h
+mode: hard
+purpose: Review + Fixes (rinnsal) im Auftrag von Lukas
+release_condition: Review abgeschlossen, Fixes committet

@@ -19,7 +19,7 @@ from datetime import datetime
 from .runner import ClaudeRunner
 from .config import load_chain, list_chains, load_auto_config, _ACTUAL_HOME, _get_prompts_dir
 from .state import ChainState
-from ..shared.config import get_rinnsal_dir
+from ..shared.config import DEFAULT_MODEL, get_rinnsal_dir
 
 
 def _home_placeholders(home: str) -> tuple:
@@ -137,8 +137,6 @@ def _send_telegram_update(chain_name, state):
 
 def run_chain(chain_name, background=False):
     """Startet eine Kette (Hauptfunktion)."""
-    rinnsal_dir = get_rinnsal_dir()
-
     config = load_chain(chain_name)
     links = config.get("links", [])
     if not links:
@@ -187,7 +185,7 @@ def run_chain(chain_name, background=False):
 
                 link_name = link.get("name", f"link-{i+1}")
                 role = link.get("role", "worker")
-                model = link.get("model") or global_config.get("default_model", "claude-sonnet-4-6")
+                model = link.get("model") or global_config.get("default_model", DEFAULT_MODEL)
                 fallback = link.get("fallback_model")
 
                 # Continue-Modus

@@ -14,7 +14,7 @@ import os
 from pathlib import Path
 from copy import deepcopy
 
-from ..shared.config import get_rinnsal_dir, load_config
+from ..shared.config import DEFAULT_MODEL, get_rinnsal_dir, load_config
 
 _ACTUAL_HOME = str(Path.home()) + os.sep
 
@@ -100,7 +100,7 @@ def load_auto_config() -> dict:
     config = load_config()
     auto = config.get("auto", {})
     defaults = {
-        "default_model": "claude-sonnet-4-6",
+        "default_model": DEFAULT_MODEL,
         "default_permission_mode": "dontAsk",
         "default_allowed_tools": ["Read", "Edit", "Write", "Bash", "Glob", "Grep"],
         "default_timeout_seconds": 1800,

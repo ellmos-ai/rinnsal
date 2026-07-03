@@ -1,7 +1,7 @@
 """
 rinnsal.i18n - Internationalisierung für Rinnsal
 =================================================
-Referenz: .SOFTWARE/_LANG/LANGUAGE_CODES.md
+Language codes follow ISO 639-1.
 
 Verwendung:
     from rinnsal.i18n import t, set_language, get_language
@@ -101,13 +101,13 @@ def get_supported_languages() -> List[str]:
     return list(SUPPORTED_LANGUAGES)
 
 
-def get_missing(lang: str = None) -> Dict[str, List[str]]:
+def get_missing(lang: Optional[str] = None) -> Dict[str, List[str]]:
     """Gibt Keys ohne Übersetzung zurück."""
     if not _loaded:
         _load()
     if lang and lang in SUPPORTED_LANGUAGES:
         return {lang: [k for k, v in _translations.items() if not v.get(lang)]}
     return {
-        l: [k for k, v in _translations.items() if not v.get(l)]
-        for l in SUPPORTED_LANGUAGES if l != 'de'
+        lng: [k for k, v in _translations.items() if not v.get(lng)]
+        for lng in SUPPORTED_LANGUAGES if lng != 'de'
     }
