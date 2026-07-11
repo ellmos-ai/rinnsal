@@ -4,7 +4,7 @@ TaskClient -- Seam ueber das kanonische taskplan-Modul
 ========================================================
 
 Das Task-System wurde 2026-07-11 als eigenstaendiges Modul **taskplan**
-extrahiert (.AI/.MEMORY/TASKPLAN, Entscheidung [U 2026-07-11] -- .MEMORY-Saeule:
+extrahiert (.AI/.MODULES/.MEMORY/TASKPLAN, Entscheidung [U 2026-07-11] -- Memory-Untermodul:
 USMC + GARDENER + TASKPLAN). Kanonische Weiterentwicklung passiert DORT.
 
 Dieses Modul ist nur noch die Weiche:
