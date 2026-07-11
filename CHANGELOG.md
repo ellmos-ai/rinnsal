@@ -12,6 +12,7 @@
 
 ### Changed
 
+- **Tasks module extracted to `taskplan`** (2026-07-11): the canonical task implementation now lives in the standalone `taskplan` package (`.MEMORY` stack: USMC + GARDENER + TASKPLAN). `rinnsal.tasks.client` became a seam that prefers an installed `taskplan` (subclass injecting rinnsal's default DB resolution) and falls back to the frozen bundled copy (`rinnsal/tasks/_bundled.py`) when `taskplan` is not installed — zero-dependency installs keep working. Import path `rinnsal.tasks.client.TaskClient`, schema (table `rinnsal_tasks`), and behavior are unchanged; `rinnsal.tasks.TASKS_ENGINE` reports the active implementation.
 - Default database path is now `~/.rinnsal/rinnsal.db` instead of `rinnsal.db` in the current working directory. Override via the `RINNSAL_DB` environment variable or the `memory.db_path` config key; explicit `--db`/`db_path` arguments keep precedence.
 - Known user home paths for chain config normalization are no longer hardcoded; they are read from the config key `auto.known_user_homes` or the `RINNSAL_KNOWN_HOMES` environment variable.
 - The default LLM model name is now a single constant `rinnsal.shared.config.DEFAULT_MODEL` (was duplicated as a string literal in four modules).
