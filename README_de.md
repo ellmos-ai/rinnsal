@@ -30,7 +30,7 @@ Nutze Rinnsal, wenn BACH zu groß, USMC zu klein ist und du eine minimale lokale
 - **Connectors** -- Kanalabstraktion für Telegram, Discord, Home Assistant
 - **Automation** -- LLM-Agent-Kettenorchestrierung ("Marble-Run": sequentielle Agent-Ketten mit Schleifen, Übergabe, Abbruchbedingungen)
 - **Ollama** -- Lokaler LLM-Runner für die Ollama REST API (qwen3, mistral, etc.)
-- **i18n** -- Internationalisierung mit JSON-Übersetzungsstrings (de, en, es, zh, ja, ru)
+- **i18n** -- Internationalisierungs-Gerüst mit JSON-Übersetzungsstrings; Deutsch und Englisch sind gefüllt, `es`/`zh`/`ja`/`ru` sind vorbereitet, aber noch nicht übersetzt
 - **Keine Abhängigkeiten** -- reines Python stdlib, keine externen Pakete nötig
 - **Python 3.10+**
 

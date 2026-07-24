@@ -2,8 +2,14 @@
   "_meta": {
     "description": "Rinnsal translation strings",
     "format": "key -> {de, en, es, zh, ja, ru}",
-    "languages": ["de", "en", "es", "zh", "ja", "ru"],
-    "reference": ".SOFTWARE/_LANG/LANGUAGE_CODES.md"
+    "languages": [
+      "de",
+      "en",
+      "es",
+      "zh",
+      "ja",
+      "ru"
+    ]
   },
   "status.title": {
     "de": "Rinnsal Status",
