@@ -7,9 +7,16 @@
 > Das Rinnsal — leichtgewichtige, local-first LLM-Agent-Infrastruktur von [ellmos-ai](https://github.com/ellmos-ai).
 
 [![Rinnsal smoke tests](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
+[![Pytest 102 passed](https://img.shields.io/badge/Pytest-102%20passed-success)](tests/)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](pyproject.toml)
 [![Lizenz: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![Local-First Privacy](https://img.shields.io/badge/Privacy-Local--First-green)](#warum-rinnsal)
+[![LLM-Ready](https://img.shields.io/badge/LLM-Ready%20%F0%9F%A4%96-blue)](llms.txt)
 
-**Schnelleinstieg:** [Warum Rinnsal?](#warum-rinnsal) · [Quick Start](#quick-start) · [Docs](docs/) · [Changelog](CHANGELOG.md)
+> [!NOTE]
+> **Für KI-Agenten & LLM-Tooling:** Eine maschinenlesbare Übersicht über Rinnsal, seine Modul-APIs, Architektur-Stufen und Suchbegriffe steht in [llms.txt](llms.txt) zur Verfügung.
+
+**Schnelleinstieg:** [Warum Rinnsal?](#warum-rinnsal) · [Systemarchitektur](#systemarchitektur) · [Quick Start](#quick-start) · [Docs](docs/) · [Changelog](CHANGELOG.md)
 
 Rinnsal gibt kleinen autonomen Agentenprojekten die Grundschicht, die sie meist zuerst brauchen: **SQLite-Memory**, **Task-Status**, **Connector-I/O**, **Kettenautomatisierung** und optional einen **Ollama-Runner**. Es ist aus [BACH](https://github.com/ellmos-ai/bach) extrahiert, bleibt aber absichtlich kompakt: nur Python-Stdlib, keine externen Laufzeitabhängigkeiten, kein Hosted Service.
 
@@ -21,7 +28,36 @@ Rinnsal gibt kleinen autonomen Agentenprojekten die Grundschicht, die sie meist 
 - **Kettenautomatisierung** -- sequenzielle LLM-Agentenläufe mit Handoff, Loop-/Once-Modus, Logs und Stop-/Reset-Steuerung
 - **Einbettbarer Kern** -- nutzbar in Python-Apps, CLI-Workflows oder lokalen Agenten-Stacks
 
-Nutze Rinnsal, wenn BACH zu groß, USMC zu klein ist und du eine minimale lokale Python-Schicht für LLM-Agent-Infrastruktur brauchst.
+Nutze Rinnsal, wenn BACH zu groß, USMC zu klein ist und du eine minimale lokale Python-Schicht für LLM-Agenten-Infrastruktur brauchst.
+
+## Systemarchitektur
+
+```mermaid
+graph TD
+    subgraph Tier1["Tier 1: Speicher-Primitiv"]
+        USMC["USMC (Shared Memory)"]
+    end
+
+    subgraph Tier2["Tier 2: Rinnsal Agenten-Infrastruktur"]
+        R_MEM["SQLite Memory (Fakten / Notizen / Sessions)"]
+        R_TASK["Task-System (Priorität & Zuweisung)"]
+        R_CONN["Connector-Gateway (Telegram / Discord / HA)"]
+        R_AUTO["Ketten-Automatisierung (MarbleRun Engine)"]
+        R_OLL["Ollama-Runner (Lokale LLM-API)"]
+    end
+
+    subgraph Tier3["Tier 3: Vollständiges Agenten-OS"]
+        BACH["BACH (Textbasiertes Agenten-OS)"]
+    end
+
+    USMC --> R_MEM
+    R_MEM --- R_TASK
+    R_TASK --- R_AUTO
+    R_CONN --- R_AUTO
+    R_OLL --- R_AUTO
+    R_AUTO --> BACH
+```
+
 
 ## Features
 

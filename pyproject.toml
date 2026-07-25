@@ -39,3 +39,7 @@ include = ["rinnsal*"]
 
 [tool.setuptools.package-data]
 "rinnsal.i18n" = ["locales/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

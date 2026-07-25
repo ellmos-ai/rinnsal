@@ -7,9 +7,16 @@
 > The trickle — lightweight, local-first LLM agent infrastructure by [ellmos-ai](https://github.com/ellmos-ai).
 
 [![Rinnsal smoke tests](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
+[![Pytest 102 passed](https://img.shields.io/badge/Pytest-102%20passed-success)](tests/)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](pyproject.toml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![Local-First Privacy](https://img.shields.io/badge/Privacy-Local--First-green)](#why-rinnsal)
+[![LLM-Ready](https://img.shields.io/badge/LLM-Ready%20%F0%9F%A4%96-blue)](llms.txt)
 
-**Quick links:** [Why Rinnsal?](#why-rinnsal) · [Quick Start](#quick-start) · [Docs](docs/) · [Changelog](CHANGELOG.md)
+> [!NOTE]
+> **For AI Agents & LLM Tooling:** A machine-readable overview of Rinnsal, its module APIs, architectural tier positioning, and search terms is available in [llms.txt](llms.txt).
+
+**Quick links:** [Why Rinnsal?](#why-rinnsal) · [Architecture](#system-architecture) · [Quick Start](#quick-start) · [Docs](docs/) · [Changelog](CHANGELOG.md)
 
 Rinnsal gives small autonomous-agent projects the boring infrastructure they usually need first: **SQLite memory**, **task state**, **connector I/O**, **chain automation**, and an optional **Ollama runner**. It is extracted from [BACH](https://github.com/ellmos-ai/bach), but intentionally stays compact: Python stdlib only, no external runtime dependencies, no hosted service.
 
@@ -22,6 +29,35 @@ Rinnsal gives small autonomous-agent projects the boring infrastructure they usu
 - **Embeddable core** -- use Rinnsal inside another Python app, CLI workflow, or local agent stack
 
 Use it when BACH is too large, USMC is too small, and you want a minimal local Python layer for LLM agent infrastructure.
+
+## System Architecture
+
+```mermaid
+graph TD
+    subgraph Tier1["Tier 1: Memory Primitive"]
+        USMC["USMC (Shared Memory)"]
+    end
+
+    subgraph Tier2["Tier 2: Rinnsal Agent Infrastructure"]
+        R_MEM["SQLite Memory (Facts / Notes / Sessions)"]
+        R_TASK["Task System (Priority & Assignment)"]
+        R_CONN["Connector Gateway (Telegram / Discord / HA)"]
+        R_AUTO["Chain Automation (MarbleRun Engine)"]
+        R_OLL["Ollama Runner (Local LLM API)"]
+    end
+
+    subgraph Tier3["Tier 3: Full Agent OS"]
+        BACH["BACH (Text-based Agent OS)"]
+    end
+
+    USMC --> R_MEM
+    R_MEM --- R_TASK
+    R_TASK --- R_AUTO
+    R_CONN --- R_AUTO
+    R_OLL --- R_AUTO
+    R_AUTO --> BACH
+```
+
 
 ## Features
 

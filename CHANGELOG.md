@@ -2,7 +2,15 @@
 
 ## Unreleased
 
+### Documentation & Discoverability (2026-07-25)
+
+- **Discoverability & Visual Presentation**: Added Shields.io badges (Pytest 102 passed, Python 3.10+, Local-First Privacy, LLM-Ready) and machine-readable AI agent callouts (`> [!NOTE]`) referencing `llms.txt` in both English (`README.md`) and German (`README_de.md`).
+- **System Architecture Diagram**: Integrated a Mermaid flowchart visualizing Rinnsal's tier positioning between USMC (Tier 1 primitive) and BACH (Tier 3 OS) across its five core modules.
+- **Project Configuration**: Added `[tool.pytest.ini_options]` to `pyproject.toml` for standard pytest execution (`pythonpath = ["."]`, `testpaths = ["tests"]`).
+- **Machine-Readable Index (`llms.txt`)**: Updated header `Last-checked` timestamp to `2026-07-25`.
+
 ### Added
+
 
 - **Tasks module** (`rinnsal/tasks`): SQLite-based task management (statuses open/active/done/cancelled, priorities, tags) sharing the database with the memory system. `TaskClient`, high-level singleton API, and CLI commands `rinnsal task add|list|show|done|activate|cancel|reopen|delete|count`. Tasks are also shown in `rinnsal status`.
 - **OllamaRunner** (`rinnsal/auto/ollama_runner.py`): runner for local Ollama models alongside `ClaudeRunner`.
