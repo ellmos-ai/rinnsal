@@ -2,7 +2,9 @@
 
 ## Unreleased
 
-### Documentation & Discoverability (2026-07-25)
+### Documentation & Maintenance (2026-07-27)
+
+- **Verification & Status Update**: Verified test suite contract (102/102 passed in 1.06s). Updated `llms.txt` verification timestamp to `2026-07-27`.
 
 - **Discoverability & Visual Presentation**: Added Shields.io badges (Pytest 102 passed, Python 3.10+, Local-First Privacy, LLM-Ready) and machine-readable AI agent callouts (`> [!NOTE]`) referencing `llms.txt` in both English (`README.md`) and German (`README_de.md`).
 - **System Architecture Diagram**: Integrated a Mermaid flowchart visualizing Rinnsal's tier positioning between USMC (Tier 1 primitive) and BACH (Tier 3 OS) across its five core modules.
