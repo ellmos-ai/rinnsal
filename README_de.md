@@ -7,7 +7,7 @@
 > Das Rinnsal — leichtgewichtige, local-first LLM-Agent-Infrastruktur von [ellmos-ai](https://github.com/ellmos-ai).
 
 [![Rinnsal smoke tests](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
-[![Pytest 102 passed](https://img.shields.io/badge/Pytest-102%20passed-success)](tests/)
+[![Pytest 110 passed](https://img.shields.io/badge/Pytest-110%20passed-success)](tests/)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](pyproject.toml)
 [![Lizenz: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Local-First Privacy](https://img.shields.io/badge/Privacy-Local--First-green)](#warum-rinnsal)
@@ -66,7 +66,7 @@ graph TD
 - **Connectors** -- Kanalabstraktion für Telegram, Discord, Home Assistant
 - **Automation** -- LLM-Agent-Kettenorchestrierung ("Marble-Run": sequentielle Agent-Ketten mit Schleifen, Übergabe, Abbruchbedingungen)
 - **Ollama** -- Lokaler LLM-Runner für die Ollama REST API (qwen3, mistral, etc.)
-- **i18n** -- Internationalisierungs-Gerüst mit JSON-Übersetzungsstrings; Deutsch und Englisch sind gefüllt, `es`/`zh`/`ja`/`ru` sind vorbereitet, aber noch nicht übersetzt
+- **i18n** -- JSON-Übersetzungskatalog für `de`, `en`, `es`, `zh`, `ja`, `ru`. Die Sprache wird über `--lang`, `RINNSAL_LANG` oder das System-Locale gewählt. Der Befehl `status` ist vollständig übersetzt; die übrige CLI-Ausgabe ist noch fest deutsch verdrahtet und wandert schrittweise in den Katalog
 - **Keine Abhängigkeiten** -- reines Python stdlib, keine externen Pakete nötig
 - **Python 3.10+**
 
@@ -157,6 +157,8 @@ print(result["output"])
 ```bash
 rinnsal status                           # Gesamtstatus
 rinnsal version                          # Version
+rinnsal --lang en status                 # Ausgabesprache (de/en/es/zh/ja/ru)
+                                         # oder RINNSAL_LANG setzen; Default ist das System-Locale
 
 # Memory
 rinnsal memory status                    # Memory-Statistiken
@@ -247,10 +249,11 @@ Rinnsal gehört zur ellmos-Infrastrukturfamilie:
 
 | Projekt | Rolle |
 |---|---|
-| [USMC](https://github.com/ellmos-ai/usmc) | Gemeinsame SQLite-Memory-Primitive |
+| [USMC](https://github.com/ellmos-ai/usmc) | Gemeinsame SQLite-Memory-Primitive -- die Schicht, aus der Rinnsals Memory-Modul hervorging |
+| [TaskMaster (`taskplan`)](https://github.com/ellmos-ai/task-master) | Das aus Rinnsal extrahierte Task-System; installiert man es, kommt deterministische Auswahl der nächsten Aufgabe auf derselben Datenbank hinzu |
 | **Rinnsal** | Memory + Tasks + Connectors + kompakte Kettenautomatisierung |
-| [MarbleRun / llmauto](https://github.com/ellmos-ai/MarbleRun) | Dedizierter autonomer Chain-Runner |
-| [BACH](https://github.com/ellmos-ai/bach) | Vollständiges textbasiertes Betriebssystem für LLM-Agenten |
+| [MarbleRun / llmauto](https://github.com/ellmos-ai/MarbleRun) | Dedizierter autonomer Chain-Runner -- Rinnsals Automatisierungsmodul stammt daher |
+| [BACH](https://github.com/ellmos-ai/bach) | Vollständiges textbasiertes Betriebssystem für LLM-Agenten -- Rinnsal wurde daraus extrahiert |
 
 Rinnsal ist eher eine einbettbare Infrastrukturschicht als ein vollständiges Assistenzprodukt. Zur Orientierung der Unterschied zu [OpenClaw](https://github.com/openclaw/openclaw):
 

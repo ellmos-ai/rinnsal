@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Deep after-care round (2026-08-01)
+
+- **i18n is now reachable, not just present.** `set_language()` existed but was never called: there was no switch, no environment variable, and no locale detection, so the six declared languages could not be selected at all. Added `resolve_language()` / `apply_language()` (precedence: `--lang` > `RINNSAL_LANG` > system locale > default) and a global `--lang` flag.
+- **Translation catalog filled.** It previously held a single key (`status.title`) with `es`/`zh`/`ja`/`ru` empty. The complete `status` command is now translated into all six languages and was verified in real terminal output (glyphs and column alignment). A regression test fails if any key is left untranslated in any language -- otherwise `t()` silently falls back to the lead language and the gap never surfaces.
+- **`taskplan` references point to the public repository** ([ellmos-ai/task-master](https://github.com/ellmos-ai/task-master)) instead of an internal, unresolvable module path. The relationship is now also documented in the README positioning table and in `llms.txt`.
+- **`.gitattributes` added.** Without it, a checkout on Linux/macOS reports the whole tree as modified after a Windows commit.
+
 ### Technical Hygiene & Maintenance (2026-07-30)
 
 - **Verification & Status Update**: Verified pytest test suite (102/102 passed in 0.55s, 100% green). Updated `llms.txt` verification timestamp to `2026-07-30`. Verified PEP 621 metadata, file integrity, and repository hygiene.
@@ -26,7 +33,7 @@
 
 ### Changed
 
-- **Tasks module extracted to `taskplan`** (2026-07-11): the canonical task implementation now lives in the standalone `taskplan` package (`.MEMORY` stack: USMC + GARDENER + TASKPLAN). `rinnsal.tasks.client` became a seam that prefers an installed `taskplan` (subclass injecting rinnsal's default DB resolution) and falls back to the frozen bundled copy (`rinnsal/tasks/_bundled.py`) when `taskplan` is not installed — zero-dependency installs keep working. Import path `rinnsal.tasks.client.TaskClient`, schema (table `rinnsal_tasks`), and behavior are unchanged; `rinnsal.tasks.TASKS_ENGINE` reports the active implementation.
+- **Tasks module extracted to `taskplan`** (2026-07-11): the canonical task implementation now lives in the standalone [`taskplan` package](https://github.com/ellmos-ai/task-master). `rinnsal.tasks.client` became a seam that prefers an installed `taskplan` (subclass injecting rinnsal's default DB resolution) and falls back to the frozen bundled copy (`rinnsal/tasks/_bundled.py`) when `taskplan` is not installed — zero-dependency installs keep working. Import path `rinnsal.tasks.client.TaskClient`, schema (table `rinnsal_tasks`), and behavior are unchanged; `rinnsal.tasks.TASKS_ENGINE` reports the active implementation.
 - Default database path is now `~/.rinnsal/rinnsal.db` instead of `rinnsal.db` in the current working directory. Override via the `RINNSAL_DB` environment variable or the `memory.db_path` config key; explicit `--db`/`db_path` arguments keep precedence.
 - Known user home paths for chain config normalization are no longer hardcoded; they are read from the config key `auto.known_user_homes` or the `RINNSAL_KNOWN_HOMES` environment variable.
 - The default LLM model name is now a single constant `rinnsal.shared.config.DEFAULT_MODEL` (was duplicated as a string literal in four modules).
