@@ -4,7 +4,8 @@ TaskClient -- EINGEFRORENER Fallback (kanonisch ist taskplan)
 ==============================================================
 
 Eingefrorene Kopie des Task-Systems, Stand der Extraktion 2026-07-11.
-Kanonische Weiterentwicklung: Paket `taskplan` (.AI/.MODULES/.MEMORY/TASKPLAN).
+Kanonische Weiterentwicklung: Paket `taskplan`
+(https://github.com/ellmos-ai/task-master).
 Hier nichts mehr aendern ausser kritischen Fixes -- Aenderungen gehoeren
 nach taskplan (dieses Modul greift nur, wenn taskplan fehlt).
 

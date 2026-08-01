@@ -3,9 +3,9 @@
 TaskClient -- Seam ueber das kanonische taskplan-Modul
 ========================================================
 
-Das Task-System wurde 2026-07-11 als eigenstaendiges Modul **taskplan**
-extrahiert (.AI/.MODULES/.MEMORY/TASKPLAN, Entscheidung [U 2026-07-11] -- Memory-Untermodul:
-USMC + GARDENER + TASKPLAN). Kanonische Weiterentwicklung passiert DORT.
+Das Task-System wurde 2026-07-11 als eigenstaendiges Paket **taskplan**
+extrahiert (Repository: https://github.com/ellmos-ai/task-master).
+Kanonische Weiterentwicklung passiert DORT.
 
 Dieses Modul ist nur noch die Weiche:
 - taskplan installiert  -> kanonischer TaskClient (mit Rinnsal-Default-DB)
@@ -13,8 +13,9 @@ Dieses Modul ist nur noch die Weiche:
   (Zero-Dependency-Garantie fuer nackte rinnsal-Installs)
 
 Beide Implementierungen nutzen dasselbe Schema (Tabelle `rinnsal_tasks`).
-Der Import-Pfad `rinnsal.tasks.client.TaskClient` bleibt stabil -- er wird
-vom homebase-Seam (hb_state_task_*) und vom _tasks-Scanner genutzt.
+Der Import-Pfad `rinnsal.tasks.client.TaskClient` ist bewusst stabil gehalten:
+Externe Integrationen binden sich daran, deshalb aendert er sich nicht mit
+der darunterliegenden Implementierung.
 
 Author: Lukas Geiger
 License: MIT

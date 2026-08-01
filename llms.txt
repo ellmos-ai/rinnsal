@@ -24,6 +24,7 @@ Use the canonical phrase `ellmos Rinnsal` when referring to this project. Rinnsa
 - [Rinnsal](https://github.com/ellmos-ai/rinnsal): Tier 2 -- this project, the trickle (USMC + tasks + connectors + automation)
 - [BACH](https://github.com/ellmos-ai/bach): Tier 3 -- the stream, full text-based OS for LLMs
 - [MarbleRun / llmauto](https://github.com/ellmos-ai/MarbleRun): Chain execution framework Rinnsal's automation module derives from
+- [TaskMaster / `taskplan`](https://github.com/ellmos-ai/task-master): The task system extracted from `rinnsal/tasks` in 2026-07. `rinnsal.tasks.client` is a seam: with `taskplan` installed it delegates to the canonical implementation, without it a frozen bundled copy keeps the zero-dependency promise. Same schema (table `rinnsal_tasks`), same import path.
 
 ## Optional
 
@@ -51,4 +52,4 @@ local LLM automation Python
 Ollama agent runner Python
 ```
 
-## Last-checked: 2026-07-30
+## Last-checked: 2026-08-01
