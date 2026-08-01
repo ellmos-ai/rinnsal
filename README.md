@@ -1,5 +1,4 @@
 <img src="assets/banner_v2.png" width="100%" alt="Rinnsal Banner">
-<img src="assets/banner_v2.png" width="100%" alt="Rinnsal Banner">
 
 # Rinnsal
 
