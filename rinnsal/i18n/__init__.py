@@ -11,6 +11,8 @@ Verwendung:
 """
 
 import json
+import locale
+import os
 import sys
 from importlib import resources
 from pathlib import Path
@@ -19,6 +21,9 @@ from typing import Dict, List, Optional
 SUPPORTED_LANGUAGES = ['de', 'en', 'es', 'zh', 'ja', 'ru']
 DEFAULT_LANGUAGE = 'de'
 FALLBACK_CHAIN = ['en', 'de']
+
+#: Umgebungsvariable, die die Sprachwahl uebersteuert.
+LANG_ENV_VAR = 'RINNSAL_LANG'
 
 _current_lang: str = DEFAULT_LANGUAGE
 _translations: Dict[str, Dict[str, str]] = {}
@@ -99,6 +104,52 @@ def get_language() -> str:
 
 def get_supported_languages() -> List[str]:
     return list(SUPPORTED_LANGUAGES)
+
+
+def _normalize(tag: Optional[str]) -> Optional[str]:
+    """Macht aus 'de_DE.UTF-8' / 'zh-Hans-CN' den Basis-Code 'de' / 'zh'."""
+    if not tag:
+        return None
+    base = tag.replace('-', '_').split('.')[0].split('_')[0].strip().lower()
+    return base if base in SUPPORTED_LANGUAGES else None
+
+
+def _system_language() -> Optional[str]:
+    """Sprache des Betriebssystems, soweit ermittelbar.
+
+    Reihenfolge: POSIX-Umgebungsvariablen (wirken auch auf Windows, wenn
+    gesetzt), danach das Locale der Python-Laufzeit.
+    """
+    for var in ('LC_ALL', 'LC_MESSAGES', 'LANG', 'LANGUAGE'):
+        lang = _normalize(os.environ.get(var, '').split(':')[0])
+        if lang:
+            return lang
+    try:
+        return _normalize(locale.getlocale()[0])
+    except (ValueError, TypeError):
+        return None
+
+
+def resolve_language(explicit: Optional[str] = None) -> str:
+    """Ermittelt die anzuwendende Sprache.
+
+    Reihenfolge: explizite Angabe (z. B. CLI ``--lang``) > Umgebungsvariable
+    ``RINNSAL_LANG`` > Sprache des Betriebssystems > ``DEFAULT_LANGUAGE``.
+    Unbekannte Werte werden uebersprungen statt zu einem Fehler zu fuehren --
+    eine falsch gesetzte Umgebungsvariable soll die CLI nicht blockieren.
+    """
+    for candidate in (explicit, os.environ.get(LANG_ENV_VAR), _system_language()):
+        lang = _normalize(candidate)
+        if lang:
+            return lang
+    return DEFAULT_LANGUAGE
+
+
+def apply_language(explicit: Optional[str] = None) -> str:
+    """Loest die Sprache auf und aktiviert sie. Gibt den gewaehlten Code zurueck."""
+    lang = resolve_language(explicit)
+    set_language(lang)
+    return lang
 
 
 def get_missing(lang: Optional[str] = None) -> Dict[str, List[str]]:

@@ -18,7 +18,7 @@ import json
 import sys
 from typing import Optional
 
-from rinnsal.i18n import t
+from rinnsal.i18n import apply_language, get_supported_languages, t
 
 
 def cmd_version(args) -> int:
@@ -38,30 +38,45 @@ def cmd_status(args) -> int:
         if args.db:
             api.init(db_path=args.db)
         s = api.status()
-        print(f"  Memory:  {s['facts_count']} Facts, {s['working_count']} Working, {s['lessons_count']} Lessons")
+        print(t(
+            'status.memory',
+            facts=s['facts_count'],
+            working=s['working_count'],
+            lessons=s['lessons_count'],
+        ))
     except Exception as e:
-        print(f"  Memory:  nicht verfuegbar ({e})")
+        print(f"  Memory:     {t('status.unavailable', error=e)}")
 
     # Tasks
     try:
         from rinnsal.tasks.client import TaskClient
         tc = TaskClient(db_path=args.db)
         c = tc.count()
-        print(f"  Tasks:   {c.get('open', 0)} offen, {c.get('active', 0)} aktiv, {c.get('done', 0)} erledigt")
+        print(t(
+            'status.tasks',
+            open=c.get('open', 0),
+            active=c.get('active', 0),
+            done=c.get('done', 0),
+        ))
     except Exception as e:
-        print(f"  Tasks:   nicht verfuegbar ({e})")
+        print(f"  Tasks:      {t('status.unavailable', error=e)}")
 
     # Chains
     try:
         from rinnsal.auto.config import list_chains
         chains = list_chains()
-        print(f"  Chains:  {len(chains)} definiert ({', '.join(chains[:5])}{'...' if len(chains) > 5 else ''})")
     except Exception:
-        print(f"  Chains:  0 definiert")
+        chains = []
+    shown = ', '.join(chains[:5]) + ('...' if len(chains) > 5 else '')
+    print(t(
+        'status.chains',
+        count=len(chains),
+        names=f" ({shown})" if chains else "",
+    ))
 
     # Connectors
     from rinnsal.connectors import list_connectors
-    print(f"  Connectors: {', '.join(list_connectors())}")
+    print(t('status.connectors', names=', '.join(list_connectors())))
 
     return 0
 
@@ -360,6 +375,11 @@ def main(argv: Optional[list] = None) -> int:
     )
     parser.add_argument('--db', help='Pfad zur DB (Default: $RINNSAL_DB oder ~/.rinnsal/rinnsal.db)')
     parser.add_argument('--agent', help='Agent-ID')
+    parser.add_argument(
+        '--lang',
+        choices=get_supported_languages(),
+        help='Ausgabesprache (Default: $RINNSAL_LANG, sonst Systemsprache)',
+    )
 
     subparsers = parser.add_subparsers(dest='command')
 
@@ -483,6 +503,7 @@ def main(argv: Optional[list] = None) -> int:
     p_pipe.set_defaults(func=cmd_pipe)
 
     args = parser.parse_args(argv)
+    apply_language(getattr(args, 'lang', None))
 
     if not args.command:
         parser.print_help()

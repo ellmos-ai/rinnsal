@@ -13,10 +13,50 @@
   },
   "status.title": {
     "de": "Rinnsal Status",
-    "en": "Rinnsal Status",
-    "es": "",
-    "zh": "",
-    "ja": "",
-    "ru": ""
+    "en": "Rinnsal status",
+    "es": "Estado de Rinnsal",
+    "zh": "Rinnsal 状态",
+    "ja": "Rinnsal ステータス",
+    "ru": "Статус Rinnsal"
+  },
+  "status.memory": {
+    "de": "  Memory:     {facts} Fakten, {working} Arbeitsnotizen, {lessons} Lessons",
+    "en": "  Memory:     {facts} facts, {working} working notes, {lessons} lessons",
+    "es": "  Memory:     {facts} hechos, {working} notas de trabajo, {lessons} lecciones",
+    "zh": "  Memory:     事实 {facts}, 工作笔记 {working}, 经验 {lessons}",
+    "ja": "  Memory:     ファクト {facts}, 作業メモ {working}, 教訓 {lessons}",
+    "ru": "  Memory:     фактов: {facts}, рабочих заметок: {working}, уроков: {lessons}"
+  },
+  "status.tasks": {
+    "de": "  Tasks:      {open} offen, {active} aktiv, {done} erledigt",
+    "en": "  Tasks:      {open} open, {active} active, {done} done",
+    "es": "  Tasks:      {open} abiertas, {active} activas, {done} hechas",
+    "zh": "  Tasks:      待办 {open}, 进行中 {active}, 已完成 {done}",
+    "ja": "  Tasks:      未着手 {open}, 進行中 {active}, 完了 {done}",
+    "ru": "  Tasks:      открытых: {open}, активных: {active}, выполненных: {done}"
+  },
+  "status.chains": {
+    "de": "  Chains:     {count} definiert{names}",
+    "en": "  Chains:     {count} defined{names}",
+    "es": "  Chains:     {count} definidas{names}",
+    "zh": "  Chains:     已定义 {count}{names}",
+    "ja": "  Chains:     定義済み {count}{names}",
+    "ru": "  Chains:     определено: {count}{names}"
+  },
+  "status.connectors": {
+    "de": "  Connectors: {names}",
+    "en": "  Connectors: {names}",
+    "es": "  Connectors: {names}",
+    "zh": "  Connectors: {names}",
+    "ja": "  Connectors: {names}",
+    "ru": "  Connectors: {names}"
+  },
+  "status.unavailable": {
+    "de": "nicht verfuegbar ({error})",
+    "en": "not available ({error})",
+    "es": "no disponible ({error})",
+    "zh": "不可用 ({error})",
+    "ja": "利用できません ({error})",
+    "ru": "недоступно ({error})"
   }
 }
