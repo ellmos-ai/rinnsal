@@ -9,6 +9,7 @@
 [![Rinnsal smoke tests](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
 [![Pytest 110 passed](https://img.shields.io/badge/Pytest-110%20passed-success)](tests/)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](pyproject.toml)
+[![Dependencies: 0 (stdlib only)](https://img.shields.io/badge/Dependencies-0%20(stdlib%20only)-blue)](#features)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Local-First Privacy](https://img.shields.io/badge/Privacy-Local--First-green)](#why-rinnsal)
 [![LLM-Ready](https://img.shields.io/badge/LLM-Ready%20%F0%9F%A4%96-blue)](llms.txt)
@@ -16,7 +17,7 @@
 > [!NOTE]
 > **For AI Agents & LLM Tooling:** A machine-readable overview of Rinnsal, its module APIs, architectural tier positioning, and search terms is available in [llms.txt](llms.txt).
 
-**Quick links:** [Why Rinnsal?](#why-rinnsal) · [Architecture](#system-architecture) · [Quick Start](#quick-start) · [Docs](docs/) · [Changelog](CHANGELOG.md)
+**Quick links:** [Why Rinnsal?](#why-rinnsal) · [Architecture](#system-architecture) · [Quick Start](#quick-start) · [CLI](#cli) · [Docs](docs/) · [Changelog](CHANGELOG.md)
 
 Rinnsal gives small autonomous-agent projects the boring infrastructure they usually need first: **SQLite memory**, **task state**, **connector I/O**, **chain automation**, and an optional **Ollama runner**. It is extracted from [BACH](https://github.com/ellmos-ai/bach), but intentionally stays compact: Python stdlib only, no external runtime dependencies, no hosted service.
 
@@ -56,6 +57,29 @@ graph TD
     R_CONN --- R_AUTO
     R_OLL --- R_AUTO
     R_AUTO --> BACH
+```
+
+### Agent Interaction Sequence
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Agent as Autonomous Agent
+    participant Mem as SQLite Memory
+    participant Task as Task Engine
+    participant LLM as Runner (Ollama / Claude)
+    participant Conn as Connector Gateway (Telegram / Discord)
+
+    Agent->>Task: next_task()
+    Task-->>Agent: return Task(id=42, priority="critical")
+    Agent->>Mem: context() [facts + working notes + lessons]
+    Mem-->>Agent: formatted LLM prompt context
+    Agent->>LLM: chat(prompt + context)
+    LLM-->>Agent: response / execution plan
+    Agent->>Mem: lesson("execution_result", notes)
+    Agent->>Task: done(task_id=42)
+    Agent->>Conn: send_message(channel="dev", "Task #42 completed")
+    Conn-->>Agent: delivery receipt (OK)
 ```
 
 

@@ -9,6 +9,7 @@
 [![Rinnsal smoke tests](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
 [![Pytest 110 passed](https://img.shields.io/badge/Pytest-110%20passed-success)](tests/)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](pyproject.toml)
+[![Abhängigkeiten: 0 (stdlib only)](https://img.shields.io/badge/Abh%C3%A4ngigkeiten-0%20(stdlib%20only)-blue)](#features)
 [![Lizenz: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Local-First Privacy](https://img.shields.io/badge/Privacy-Local--First-green)](#warum-rinnsal)
 [![LLM-Ready](https://img.shields.io/badge/LLM-Ready%20%F0%9F%A4%96-blue)](llms.txt)
@@ -16,7 +17,7 @@
 > [!NOTE]
 > **Für KI-Agenten & LLM-Tooling:** Eine maschinenlesbare Übersicht über Rinnsal, seine Modul-APIs, Architektur-Stufen und Suchbegriffe steht in [llms.txt](llms.txt) zur Verfügung.
 
-**Schnelleinstieg:** [Warum Rinnsal?](#warum-rinnsal) · [Systemarchitektur](#systemarchitektur) · [Quick Start](#quick-start) · [Docs](docs/) · [Changelog](CHANGELOG.md)
+**Schnelleinstieg:** [Warum Rinnsal?](#warum-rinnsal) · [Systemarchitektur](#systemarchitektur) · [Quick Start](#quick-start) · [CLI](#cli) · [Docs](docs/) · [Changelog](CHANGELOG.md)
 
 Rinnsal gibt kleinen autonomen Agentenprojekten die Grundschicht, die sie meist zuerst brauchen: **SQLite-Memory**, **Task-Status**, **Connector-I/O**, **Kettenautomatisierung** und optional einen **Ollama-Runner**. Es ist aus [BACH](https://github.com/ellmos-ai/bach) extrahiert, bleibt aber absichtlich kompakt: nur Python-Stdlib, keine externen Laufzeitabhängigkeiten, kein Hosted Service.
 
@@ -56,6 +57,29 @@ graph TD
     R_CONN --- R_AUTO
     R_OLL --- R_AUTO
     R_AUTO --> BACH
+```
+
+### Agenten-Workflow-Lebenszyklus (Sequenzdiagramm)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Agent as Autonomer Agent
+    participant Mem as SQLite Memory
+    participant Task as Task-System
+    participant LLM as Runner (Ollama / Claude)
+    participant Conn as Connector Gateway (Telegram / Discord)
+
+    Agent->>Task: next_task()
+    Task-->>Agent: return Task(id=42, priority="critical")
+    Agent->>Mem: context() [Fakten + Notizen + Lessons]
+    Mem-->>Agent: formatierter LLM-Prompt-Kontext
+    Agent->>LLM: chat(Prompt + Kontext)
+    LLM-->>Agent: Antwort / Ausfuehrungsplan
+    Agent->>Mem: lesson("execution_result", Notizen)
+    Agent->>Task: done(task_id=42)
+    Agent->>Conn: send_message(channel="dev", "Task #42 abgeschlossen")
+    Conn-->>Agent: Sende-Bestaetigung (OK)
 ```
 
 

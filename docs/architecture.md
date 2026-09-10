@@ -2,14 +2,16 @@
 
 ## Ueberblick
 
-Rinnsal besteht aus drei unabhaengigen Modulen plus einer gemeinsamen Infrastrukturschicht:
+Rinnsal besteht aus fuenf unabhaengigen Modulen plus einer gemeinsamen Infrastrukturschicht:
 
 ```
 rinnsal/
-├── memory/        ← USMC (United Shared Memory Client)
-├── connectors/    ← BACH Connector Framework
-├── auto/          ← llmauto (Marble-Run Engine)
-└── shared/        ← Config + Event-Bus (NEU)
+├── memory/        ← SQLite-basiertes agentenuebergreifendes Gedaechtnis (USMC-Ursprung)
+├── tasks/         ← Aufgabenverwaltung mit Prioritaeten & Status (Seam zu taskplan)
+├── connectors/    ← Messaging-Kanalabstraktion (BACH Connector Framework)
+├── auto/          ← MarbleRun-Engine + Ollama-Runner (Lokale Kettenorchestrierung)
+├── i18n/          ← Lokalisierungskatalog (de/en/es/zh/ja/ru)
+└── shared/        ← Konfiguration + Event-Bus
 ```
 
 ## Design-Prinzipien
@@ -27,16 +29,42 @@ rinnsal/
 │ (SQLite)│      │  (Marble-Run)│      │(Telegram,│
 └────┬────┘      └──────┬───────┘      │ Discord) │
      │                  │              └────┬─────┘
-     └──────────┬───────┘                   │
-                ▼                           │
-          ┌──────────┐                      │
-          │ Event-Bus│◄─────────────────────┘
-          └──────────┘
+     │      ┌───────────┼───────────────────┤
+     ▼      ▼           ▼                   │
+┌──────────────┐  ┌──────────┐              │
+│ Tasks-Seam   │  │ Event-Bus│◄─────────────┘
+│ (rinnsal/    │  └──────────┘
+│  taskplan)   │
+└──────────────┘
 ```
 
 - **Memory ↔ Auto**: Chain-Engine liest optional Kontext aus Memory, schreibt Ergebnisse zurueck.
-- **Connectors ↔ Auto**: Telegram-Notifications nach Chain-Links via Connector-Factory.
+- **Tasks ↔ Auto**: Agenten beziehen naechste offene Aufgaben prioritaetsbasiert via Task-Engine.
+- **Connectors ↔ Auto**: Benachrichtigungen nach Chain-Links via Connector-Gateway.
 - **Event-Bus**: Entkopplungsschicht fuer komponentenuebergreifende Events.
+
+## Agenten-Interaktionssequenz
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Agent as Autonomer Agent
+    participant Mem as SQLite Memory
+    participant Task as Task-System
+    participant LLM as Runner (Ollama / Claude)
+    participant Conn as Connector Gateway (Telegram / Discord)
+
+    Agent->>Task: next_task()
+    Task-->>Agent: return Task(id=42, priority="critical")
+    Agent->>Mem: context() [Fakten + Notizen + Lessons]
+    Mem-->>Agent: formatierter LLM-Prompt-Kontext
+    Agent->>LLM: chat(Prompt + Kontext)
+    LLM-->>Agent: Antwort / Ausfuehrungsplan
+    Agent->>Mem: lesson("execution_result", Notizen)
+    Agent->>Task: done(task_id=42)
+    Agent->>Conn: send_message(channel="dev", "Task #42 abgeschlossen")
+    Conn-->>Agent: Sende-Bestaetigung (OK)
+```
 
 ## State-Management
 

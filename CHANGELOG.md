@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Discoverability, Badges & Sequence Architecture (2026-09-10)
+
+- **Agent Interaction Sequence Diagram**: Added end-to-end Mermaid sequence diagrams illustrating the autonomous agent lifecycle (task query, context injection from SQLite memory, runner chat inference, memory lesson feedback, task completion, connector notification) across `README.md`, `README_de.md`, and `docs/architecture.md`. Validated 100% clean with `lint_mermaid.py`.
+- **Badges & Discoverability**: Added `Dependencies: 0 (stdlib only)` badge and CLI quick links to both `README.md` and `README_de.md`.
+- **Architecture Documentation Sync**: Synchronized module overview in `docs/architecture.md` to reflect all five core modules (`memory`, `tasks`, `connectors`, `auto`, `i18n`) and their event bus / seam integration.
+- **Machine-Readable Index (`llms.txt`)**: Updated `Last-checked` verification timestamp to `2026-09-10`.
+
 ### Deep after-care round (2026-08-01)
 
 - **i18n is now reachable, not just present.** `set_language()` existed but was never called: there was no switch, no environment variable, and no locale detection, so the six declared languages could not be selected at all. Added `resolve_language()` / `apply_language()` (precedence: `--lang` > `RINNSAL_LANG` > system locale > default) and a global `--lang` flag.
