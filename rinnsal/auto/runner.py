@@ -11,8 +11,6 @@ License: MIT
 """
 import subprocess
 import os
-import sys
-from pathlib import Path
 from datetime import datetime
 
 from ..shared.config import DEFAULT_MODEL

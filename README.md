@@ -6,8 +6,8 @@
 
 > The trickle — lightweight, local-first LLM agent infrastructure by [ellmos-ai](https://github.com/ellmos-ai).
 
-[![Rinnsal smoke tests](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
-[![Pytest 110 passed](https://img.shields.io/badge/Pytest-110%20passed-success)](tests/)
+[![CI Matrix & Hygiene](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
+[![Pytest 119 passed](https://img.shields.io/badge/Pytest-119%20passed-success)](tests/)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](pyproject.toml)
 [![Dependencies: 0 (stdlib only)](https://img.shields.io/badge/Dependencies-0%20(stdlib%20only)-blue)](#features)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
@@ -304,8 +304,8 @@ MIT -- Lukas Geiger
 
 ## Haftung / Liability
 
-Dieses Projekt ist eine **unentgeltliche Open-Source-Schenkung** im Sinne der §§ 516 ff. BGB. Die Haftung des Urhebers ist gemäß **§ 521 BGB** auf **Vorsatz und grobe Fahrlässigkeit** beschränkt. Ergänzend gilt der Haftungsausschluss der MIT-Lizenz.
+Dieses Projekt ist eine **unentgeltliche Open-Source-Schenkung (Gefälligkeitsrecht)** im Sinne der §§ 516 ff. BGB. Die Haftung des Urhebers ist gemäß **§ 521 BGB** auf **Vorsatz und grobe Fahrlässigkeit** beschränkt. Ergänzend gilt der Haftungsausschluss der MIT-Lizenz.
 
 Nutzung auf eigenes Risiko. Keine Wartungszusage, keine Verfügbarkeitsgarantie, keine Gewähr für Fehlerfreiheit oder Eignung für einen bestimmten Zweck.
 
-This project is an unpaid open-source donation. Liability is limited to intent and gross negligence (§ 521 German Civil Code). Use at your own risk. No warranty, no maintenance guarantee, no fitness-for-purpose assumed.
+This project is an unpaid open-source donation (Gefälligkeitsrecht). Liability is limited to intent and gross negligence (§ 521 German Civil Code / BGB). Use at your own risk. No warranty, no maintenance guarantee, no fitness-for-purpose assumed.

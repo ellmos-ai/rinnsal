@@ -20,7 +20,6 @@ Verwendung:
 Author: Lukas Geiger
 License: MIT
 """
-from pathlib import Path
 from typing import Optional, List, Dict
 
 from .client import MemoryClient

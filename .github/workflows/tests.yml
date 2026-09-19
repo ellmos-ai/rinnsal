@@ -1,4 +1,4 @@
-name: Rinnsal smoke tests
+name: Rinnsal CI Matrix & Hygiene
 
 on:
   push:
@@ -10,28 +10,45 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
-    name: Python ${{ matrix.python-version }}
-    runs-on: ubuntu-latest
+    name: Python ${{ matrix.python-version }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
     strategy:
       fail-fast: false
       matrix:
+        os: [ubuntu-latest, windows-latest]
         python-version: ["3.10", "3.11", "3.12", "3.13"]
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install package
-        run: python -m pip install -e .
+      - name: Install package and dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+          python -m pip install pytest ruff
 
-      - name: Run tests
+      - name: Ruff static analysis
+        run: ruff check rinnsal tests
+
+      - name: Run pytest test suite
+        env:
+          PYTHONIOENCODING: utf-8
+        run: pytest
+
+      - name: Run unittest discovery
         env:
           PYTHONIOENCODING: utf-8
         run: python -m unittest discover -s tests -v
@@ -40,3 +57,8 @@ jobs:
         env:
           PYTHONIOENCODING: utf-8
         run: python -m compileall -q rinnsal tests
+
+      - name: CLI smoke test
+        run: |
+          rinnsal --help
+          rinnsal --version

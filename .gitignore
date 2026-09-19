@@ -40,8 +40,37 @@ system_prompt.txt
 # Interne Aufgabenliste (User-Konvention: nicht im oeffentlichen Repo)
 TODO.md
 
-# Interne Multi-Agenten-Koordination (LOCK-System)
+# Multi-Host Synchronisation & Konfliktkopien
+*conflicted copy*
+* (Kopie)*
+* (Copy)*
+*-ASUS*
+*-ASUS-GEI*
+*-LAPTOP*
+*-WORKSTATION*
+*-WORKSTATION-LG*
+*-Mac Studio*
+*-MacBook*
+
+# Interne Multi-Agenten-Koordination & Projekt-Sperren (LOCK-System)
+LOCK
+LOCK.*
 LOCK*.txt
+LOCK.permissions.json
+LOCK.user.*
+LOCK.until.*
+LOCK.condition.*
+
+# Package & Dependency Manager Lockfiles (Library Repo / Zero Runtime Deps)
+uv.lock
+!package-lock.json
+
+# Test- & Cache-Artefakte
+.hypothesis/
+.coverage
+htmlcov/
+*.orig
+*.rej
 
 # Laufprotokolle der Pflegerunden (internes Arbeitsmaterial, kein Repo-Inhalt)
 _after-care/

@@ -9,7 +9,6 @@ Based on llmauto.core.state.
 Author: Lukas Geiger
 License: MIT
 """
-from pathlib import Path
 from datetime import datetime
 from warnings import warn
 

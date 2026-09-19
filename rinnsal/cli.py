@@ -96,8 +96,8 @@ def cmd_memory(args) -> int:
 
     if subcmd == "status":
         s = client.get_status()
-        print(f"Rinnsal Memory Status")
-        print(f"=====================")
+        print("Rinnsal Memory Status")
+        print("=====================")
         print(f"DB:              {s['db_path']}")
         print(f"Agent:           {s['agent_id']}")
         print(f"Facts:           {s['facts_count']} ({s['confident_facts']} mit confidence >= 0.8)")
@@ -225,7 +225,7 @@ def cmd_connect(args) -> int:
             if conn.send_message(args.recipient, args.message):
                 print(f"[OK] Nachricht gesendet via {args.type}.")
             else:
-                print(f"[FEHLER] Senden fehlgeschlagen.")
+                print("[FEHLER] Senden fehlgeschlagen.")
                 return 1
         except Exception as e:
             print(f"[FEHLER] {e}")
@@ -343,11 +343,11 @@ def _print_task_table(tasks):
     stat_sym = {'open': ' ', 'active': '>', 'done': 'x', 'cancelled': '-'}
     print(f"{'ID':>4}  {'S':1}  {'Pri':3}  {'Titel':<50}  {'Agent':<10}")
     print("-" * 75)
-    for t in tasks:
-        s = stat_sym.get(t['status'], '?')
-        p = pri_sym.get(t['priority'], '?')
-        title = t['title'][:48] + ".." if len(t['title']) > 50 else t['title']
-        print(f"{t['id']:>4}  {s:1}  {p:<3}  {title:<50}  {t['agent_id']:<10}")
+    for item in tasks:
+        s = stat_sym.get(item['status'], '?')
+        p = pri_sym.get(item['priority'], '?')
+        title = item['title'][:48] + ".." if len(item['title']) > 50 else item['title']
+        print(f"{item['id']:>4}  {s:1}  {p:<3}  {title:<50}  {item['agent_id']:<10}")
 
 
 # === Pipe Command ===
@@ -379,6 +379,12 @@ def main(argv: Optional[list] = None) -> int:
         '--lang',
         choices=get_supported_languages(),
         help='Ausgabesprache (Default: $RINNSAL_LANG, sonst Systemsprache)',
+    )
+    from rinnsal import __version__
+    parser.add_argument(
+        '--version', '-V',
+        action='version',
+        version=f'%(prog)s {__version__}',
     )
 
     subparsers = parser.add_subparsers(dest='command')

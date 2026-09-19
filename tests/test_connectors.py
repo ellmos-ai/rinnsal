@@ -2,7 +2,7 @@
 """Tests fuer rinnsal.connectors"""
 import unittest
 from rinnsal.connectors.base import (
-    BaseConnector, ConnectorConfig, ConnectorStatus, Message
+    ConnectorConfig, ConnectorStatus, Message
 )
 from rinnsal.connectors import list_connectors, CONNECTOR_REGISTRY
 

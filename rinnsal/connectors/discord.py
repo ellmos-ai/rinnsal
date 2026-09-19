@@ -14,7 +14,6 @@ import time
 import threading
 import urllib.request
 import urllib.error
-from datetime import datetime
 from typing import List, Optional, Callable, Tuple
 
 from .base import BaseConnector, ConnectorConfig, ConnectorStatus, Message

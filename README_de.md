@@ -6,8 +6,8 @@
 
 > Das Rinnsal — leichtgewichtige, local-first LLM-Agent-Infrastruktur von [ellmos-ai](https://github.com/ellmos-ai).
 
-[![Rinnsal smoke tests](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
-[![Pytest 110 passed](https://img.shields.io/badge/Pytest-110%20passed-success)](tests/)
+[![CI Matrix & Hygiene](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
+[![Pytest 119 passed](https://img.shields.io/badge/Pytest-119%20passed-success)](tests/)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](pyproject.toml)
 [![Abhängigkeiten: 0 (stdlib only)](https://img.shields.io/badge/Abh%C3%A4ngigkeiten-0%20(stdlib%20only)-blue)](#features)
 [![Lizenz: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
@@ -304,6 +304,6 @@ MIT -- Lukas Geiger
 
 ## Haftung
 
-Dieses Projekt ist eine **unentgeltliche Open-Source-Schenkung** im Sinne der §§ 516 ff. BGB. Die Haftung des Urhebers ist gemäß **§ 521 BGB** auf **Vorsatz und grobe Fahrlässigkeit** beschränkt. Ergänzend gilt der Haftungsausschluss der MIT-Lizenz.
+Dieses Projekt ist eine **unentgeltliche Open-Source-Schenkung (Gefälligkeitsrecht)** im Sinne der §§ 516 ff. BGB. Die Haftung des Urhebers ist gemäß **§ 521 BGB** auf **Vorsatz und grobe Fahrlässigkeit** beschränkt. Ergänzend gilt der Haftungsausschluss der MIT-Lizenz.
 
 Nutzung auf eigenes Risiko. Keine Wartungszusage, keine Verfügbarkeitsgarantie, keine Gewähr für Fehlerfreiheit oder Eignung für einen bestimmten Zweck.

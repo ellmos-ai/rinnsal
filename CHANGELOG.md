@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+### CI Matrix Hardening, PEP 621 Metadata, Contract Tests & Hygiene (2026-09-19)
+
+- **CI Matrix & Hardening (`tests.yml`, etc.)**: Hardened CI workflow matrix across Python 3.10, 3.11, 3.12, and 3.13 on both `ubuntu-latest` and `windows-latest`. Added concurrency controls (`cancel-in-progress: true`), explicit minimal token permissions (`contents: read`), and strict job timeouts (`timeout-minutes: 15`). Also hardened `stale.yml`, `welcome.yml`, `auto-assign.yml`, and `label-sync.yml` with concurrency and timeout guards.
+- **PEP 621 Metadata & Tooling**: Enriched `pyproject.toml` with `license-files = ["LICENSE", "THIRD_PARTY_LICENSES.md"]`, full set of `[project.urls]` (`Changelog`, `Third-Party Licenses`, `Parent Organization`, `LLM Ready`), standard `[tool.pytest.ini_options]` (`minversion = "7.0"`, `addopts = "-ra -v"`, `norecursedirs`), and `[tool.ruff]` configuration (`target-version = "py310"`, `select = ["E", "F", "W"]`).
+- **Dependency Audit & SBOM (`THIRD_PARTY_LICENSES.md`)**: Created comprehensive audit confirming zero external runtime dependencies (`PSF-2.0` Python Standard Library only), `RunAsInvoker` user privilege requirement, non-viral MIT licensing, optional `taskplan` seam architecture, and 10 core governance invariants (`INV-LOCAL-01` through `INV-SLA-10`).
+- **Comprehensive Contract Tests (`tests/test_metadata.py`)**: Added 9 contract tests verifying PEP 621 metadata, version parity, CI workflow security/matrix configurations, cloud-sync/LOCK system `.gitignore` rules, statutory liability notice (§ 521 BGB Gefälligkeitsrecht), SBOM audit, UTF-8 file integrity, Mermaid diagram syntax, and CLI smoke execution (`--help`, `--version`). Test suite expanded from 110 to 119 tests (100% pass rate).
+- **Code Linting & Bug Fixes**: Resolved 26 static analysis linter issues across `auto/`, `cli.py`, `connectors/`, `memory/`, and `tests/` (redundant f-strings, unused imports/variables, variable shadowing `t` vs i18n translation function). Added `--version` flag to root CLI entrypoint.
+- **Multi-Host & LOCK System Guardrails (`.gitignore`)**: Added explicit rules protecting against multi-host conflict files (`*conflicted copy*`, `*-ASUS*`, `*-WORKSTATION*`, `*-Mac Studio*`) and canonical lock files (`LOCK`, `LOCK.*`, `LOCK*.txt`, `LOCK.permissions.json`, `LOCK.user.*`, `LOCK.until.*`, `LOCK.condition.*`).
+
 ### Discoverability, Badges & Sequence Architecture (2026-09-10)
 
 - **Agent Interaction Sequence Diagram**: Added end-to-end Mermaid sequence diagrams illustrating the autonomous agent lifecycle (task query, context injection from SQLite memory, runner chat inference, memory lesson feedback, task completion, connector notification) across `README.md`, `README_de.md`, and `docs/architecture.md`. Validated 100% clean with `lint_mermaid.py`.

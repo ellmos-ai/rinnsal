@@ -10,7 +10,6 @@ Author: Lukas Geiger
 License: MIT
 """
 import sqlite3
-import json
 from pathlib import Path
 from typing import Optional, List, Dict
 from datetime import datetime

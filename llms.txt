@@ -13,6 +13,7 @@ Core modules: memory (facts, lessons, working notes, sessions), tasks (prioritie
 - [README](https://github.com/ellmos-ai/rinnsal/blob/master/README.md): Overview, install, quick start, module APIs
 - [README_de](https://github.com/ellmos-ai/rinnsal/blob/master/README_de.md): German overview with local-first positioning and liability note
 - [LICENSE](https://github.com/ellmos-ai/rinnsal/blob/master/LICENSE): MIT license text
+- [THIRD_PARTY_LICENSES](https://github.com/ellmos-ai/rinnsal/blob/master/THIRD_PARTY_LICENSES.md): Dependency audit and governance invariants
 
 ## Search and disambiguation
 
@@ -52,4 +53,4 @@ local LLM automation Python
 Ollama agent runner Python
 ```
 
-## Last-checked: 2026-09-10
+## Last-checked: 2026-09-19

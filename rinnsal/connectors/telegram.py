@@ -18,13 +18,11 @@ import json
 import os
 import sys
 import socket
-import tempfile
 import time
 import threading
 import urllib.request
 import urllib.error
 from datetime import datetime
-from pathlib import Path
 from typing import Any, List, Optional, Callable, Tuple
 
 from .base import BaseConnector, ConnectorConfig, ConnectorStatus, Message

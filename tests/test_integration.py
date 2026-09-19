@@ -25,7 +25,10 @@ class TestEventBus(unittest.TestCase):
     def test_off(self):
         bus = EventBus()
         results = []
-        handler = lambda d: results.append(1)
+
+        def handler(d):
+            results.append(1)
+
         bus.on("evt", handler)
         bus.off("evt", handler)
         bus.emit("evt")
@@ -67,10 +70,12 @@ class TestPackageImports(unittest.TestCase):
     def test_import_memory(self):
         from rinnsal.memory import MemoryClient, api
         self.assertIsNotNone(MemoryClient)
+        self.assertIsNotNone(api)
 
     def test_import_connectors(self):
         from rinnsal.connectors import load_connector, list_connectors
         self.assertIsNotNone(load_connector)
+        self.assertIsNotNone(list_connectors)
 
     def test_import_auto(self):
         from rinnsal.auto.runner import ClaudeRunner

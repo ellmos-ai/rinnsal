@@ -8,12 +8,14 @@ dynamic = ["version"]
 description = "Lightweight local-first LLM agent infrastructure: SQLite memory, tasks, connectors, and chain automation."
 readme = "README.md"
 license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_LICENSES.md"]
 requires-python = ">=3.10"
 authors = [{name = "Lukas Geiger"}]
 keywords = ["llm", "agent", "agent-memory", "sqlite", "automation", "connectors", "local-first", "ollama", "infrastructure"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
@@ -27,6 +29,10 @@ Homepage = "https://github.com/ellmos-ai/rinnsal"
 Repository = "https://github.com/ellmos-ai/rinnsal"
 Documentation = "https://github.com/ellmos-ai/rinnsal#readme"
 Issues = "https://github.com/ellmos-ai/rinnsal/issues"
+Changelog = "https://github.com/ellmos-ai/rinnsal/blob/master/CHANGELOG.md"
+"Third-Party Licenses" = "https://github.com/ellmos-ai/rinnsal/blob/master/THIRD_PARTY_LICENSES.md"
+"Parent Organization" = "https://github.com/ellmos-ai"
+"LLM Ready" = "https://github.com/ellmos-ai/rinnsal/blob/master/llms.txt"
 
 [project.scripts]
 rinnsal = "rinnsal.cli:main"
@@ -41,5 +47,16 @@ include = ["rinnsal*"]
 "rinnsal.i18n" = ["locales/*.json"]
 
 [tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -v"
 testpaths = ["tests"]
 pythonpath = ["."]
+norecursedirs = [".git", ".pytest_cache", ".venv", "venv", "build", "dist", "_after-care"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+ignore = ["E501"]

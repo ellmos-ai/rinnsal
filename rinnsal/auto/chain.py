@@ -17,7 +17,7 @@ from pathlib import Path
 from datetime import datetime
 
 from .runner import ClaudeRunner
-from .config import load_chain, list_chains, load_auto_config, _ACTUAL_HOME, _get_prompts_dir
+from .config import load_chain, load_auto_config, _ACTUAL_HOME, _get_prompts_dir
 from .state import ChainState
 from ..shared.config import DEFAULT_MODEL, get_rinnsal_dir
 
@@ -352,7 +352,7 @@ def stop_chain(chain_name, reason=None):
     reason = reason or "Manuell gestoppt via rinnsal"
     state.request_stop(reason)
     print(f"STOP-Datei erstellt fuer '{chain_name}'.")
-    print(f"Pipeline stoppt nach aktuellem Glied.")
+    print("Pipeline stoppt nach aktuellem Glied.")
     print(f"Grund: {reason}")
     return 0
 
