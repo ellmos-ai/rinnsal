@@ -276,6 +276,7 @@ Rinnsal belongs to the ellmos infrastructure family:
 | [USMC](https://github.com/ellmos-ai/usmc) | Shared SQLite memory primitive -- the layer Rinnsal's memory module grew out of |
 | [TaskMaster (`taskplan`)](https://github.com/ellmos-ai/task-master) | The task system extracted from Rinnsal; install it to get deterministic next-task selection on top of the same database |
 | **Rinnsal** | Memory + tasks + connectors + compact chain automation |
+| [COMA](https://github.com/ellmos-ai/coma) | Local file-based job coordination and agent-process startup/status, complementing Rinnsal's SQLite task priorities, ownership, and next-task selection |
 | [MarbleRun / llmauto](https://github.com/ellmos-ai/MarbleRun) | Dedicated autonomous chain runner -- Rinnsal's automation module derives from it |
 | [BACH](https://github.com/ellmos-ai/bach) | Full text-based operating system for LLM agents -- Rinnsal was extracted from it |
 
