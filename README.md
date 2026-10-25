@@ -2,7 +2,9 @@
 
 # Rinnsal
 
-**[🇩🇪 Deutsche Version](README_de.md)** · **🇬🇧 English**
+**README languages:** **🇬🇧 English** · [🇩🇪 Deutsch](README_de.md) · [🇪🇸 Español](README_es.md)
+
+These are the available README documentation languages. CLI translation coverage is described separately under i18n below.
 
 > The trickle — lightweight, local-first LLM agent infrastructure by [ellmos-ai](https://github.com/ellmos-ai).
 
