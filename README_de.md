@@ -2,7 +2,9 @@
 
 # Rinnsal
 
-**[🇬🇧 English Version](README.md)** · **🇩🇪 Deutsch**
+**README-Sprachen:** [🇬🇧 English](README.md) · **🇩🇪 Deutsch** · [🇪🇸 Español](README_es.md)
+
+Dies sind die verfügbaren Sprachfassungen der README-Dokumentation. Der Übersetzungsumfang der CLI ist unten unter i18n gesondert beschrieben.
 
 > Das Rinnsal — leichtgewichtige, local-first LLM-Agent-Infrastruktur von [ellmos-ai](https://github.com/ellmos-ai).
 
