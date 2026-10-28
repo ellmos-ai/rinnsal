@@ -1,9 +1,9 @@
-<!-- worldset: {"translated_from_sha256": "7bc7ca98309094b3a0659316c0901589f5a5d5d2154c6e386af18350aff5ac88", "translator": "gpt-6-luna", "translated_at": "2026-10-25T03:52:08.053024+00:00"} -->
+<!-- worldset: {"translated_from_sha256": "f2a28f0eff8d9652f829f2907e2865ec9c4f5f60894f9997431cd22833c5e9c4", "translator": "gpt-6-luna", "translated_at": "2026-10-25T03:52:08.053024+00:00"} -->
 <img src="assets/banner_v2.png" width="100%" alt="Rinnsal Banner">
 
 # Rinnsal
 
-**Idiomas de los README disponibles:** [🇬🇧 Inglés](README.md) · [🇩🇪 Alemán](README_de.md) · **🇪🇸 Español**
+**Idiomas de los README disponibles:** [🇬🇧 Inglés](README.md) · [🇩🇪 Alemán](README_de.md) · **🇪🇸 Español** · [🇨🇳 Chino simplificado](README_zh.md)
 
 > El goteo: infraestructura ligera de agentes LLM con prioridad local, de [ellmos-ai](https://github.com/ellmos-ai).
 

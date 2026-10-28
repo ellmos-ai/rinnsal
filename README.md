@@ -2,7 +2,7 @@
 
 # Rinnsal
 
-**README languages:** **🇬🇧 English** · [🇩🇪 Deutsch](README_de.md) · [🇪🇸 Español](README_es.md)
+**README languages:** **🇬🇧 English** · [🇩🇪 Deutsch](README_de.md) · [🇪🇸 Español](README_es.md) · [🇨🇳 简体中文](README_zh.md)
 
 These are the available README documentation languages. CLI translation coverage is described separately under i18n below.
 
