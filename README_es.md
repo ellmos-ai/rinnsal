@@ -3,7 +3,7 @@
 
 # Rinnsal
 
-**Idiomas de los README disponibles:** [🇬🇧 Inglés](README.md) · [🇩🇪 Alemán](README_de.md) · **🇪🇸 Español** · [🇨🇳 Chino simplificado](README_zh.md)
+**Idiomas de los README disponibles:** [🇬🇧 Inglés](README.md) · [🇩🇪 Alemán](README_de.md) · **🇪🇸 Español** · [🇨🇳 Chino simplificado](README_zh.md) · [🇯🇵 Japonés](README_ja.md) · [🇷🇺 Ruso](README_ru.md)
 
 > El goteo: infraestructura ligera de agentes LLM con prioridad local, de [ellmos-ai](https://github.com/ellmos-ai).
 

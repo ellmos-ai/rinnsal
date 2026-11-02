@@ -4,6 +4,8 @@
 
 ### Documentation languages (2026-11-02)
 
+- Added Japanese and Russian READMEs with reciprocal navigation across all six documentation languages.
+- Included all six READMEs, the LLM index and changelog in the source distribution.
 - Added a reviewed Simplified Chinese README with reciprocal language navigation. Indexed the Spanish and Chinese READMEs in `llms.txt`; documentation languages remain separate from runtime localization coverage.
 
 ### CI Matrix Hardening, PEP 621 Metadata, Contract Tests & Hygiene (2026-09-19)

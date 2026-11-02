@@ -14,6 +14,8 @@ Core modules: memory (facts, lessons, working notes, sessions), tasks (prioritie
 - [README_de](https://github.com/ellmos-ai/rinnsal/blob/master/README_de.md): German overview with local-first positioning and liability note
 - [README_es](https://github.com/ellmos-ai/rinnsal/blob/master/README_es.md): Spanish documentation
 - [README_zh](https://github.com/ellmos-ai/rinnsal/blob/master/README_zh.md): Simplified Chinese documentation; README languages do not imply complete CLI/API localization
+- [README_ja](https://github.com/ellmos-ai/rinnsal/blob/master/README_ja.md): Japanese documentation
+- [README_ru](https://github.com/ellmos-ai/rinnsal/blob/master/README_ru.md): Russian documentation
 - [LICENSE](https://github.com/ellmos-ai/rinnsal/blob/master/LICENSE): MIT license text
 - [THIRD_PARTY_LICENSES](https://github.com/ellmos-ai/rinnsal/blob/master/THIRD_PARTY_LICENSES.md): Dependency audit and governance invariants
 
