@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Documentation languages (2026-11-02)
+
+- Added a reviewed Simplified Chinese README with reciprocal language navigation. Indexed the Spanish and Chinese READMEs in `llms.txt`; documentation languages remain separate from runtime localization coverage.
+
 ### CI Matrix Hardening, PEP 621 Metadata, Contract Tests & Hygiene (2026-09-19)
 
 - **CI Matrix & Hardening (`tests.yml`, etc.)**: Hardened CI workflow matrix across Python 3.10, 3.11, 3.12, and 3.13 on both `ubuntu-latest` and `windows-latest`. Added concurrency controls (`cancel-in-progress: true`), explicit minimal token permissions (`contents: read`), and strict job timeouts (`timeout-minutes: 15`). Also hardened `stale.yml`, `welcome.yml`, `auto-assign.yml`, and `label-sync.yml` with concurrency and timeout guards.
