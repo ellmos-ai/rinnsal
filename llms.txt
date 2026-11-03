@@ -12,6 +12,15 @@ Core modules: memory (facts, lessons, working notes, sessions), tasks (prioritie
 
 - [README](https://github.com/ellmos-ai/rinnsal/blob/master/README.md): Overview, install, quick start, module APIs
 - [README_de](https://github.com/ellmos-ai/rinnsal/blob/master/README_de.md): German overview with local-first positioning and liability note
+- [README_es](https://github.com/ellmos-ai/rinnsal/blob/master/README_es.md): Spanish documentation
+- [README_zh](https://github.com/ellmos-ai/rinnsal/blob/master/README_zh.md): Simplified Chinese documentation; README languages do not imply complete CLI/API localization
+- [README_ja](https://github.com/ellmos-ai/rinnsal/blob/master/README_ja.md): Japanese documentation
+- [README_ru](https://github.com/ellmos-ai/rinnsal/blob/master/README_ru.md): Russian documentation
+- [README_fr](https://github.com/ellmos-ai/rinnsal/blob/master/README_fr.md): French documentation; README languages remain separate from CLI translation coverage
+- [README_hi](https://github.com/ellmos-ai/rinnsal/blob/master/README_hi.md): Hindi documentation; README languages remain separate from CLI translation coverage
+- [README_ar](https://github.com/ellmos-ai/rinnsal/blob/master/README_ar.md): Arabic documentation; README languages remain separate from CLI translation coverage
+- [README_bn](https://github.com/ellmos-ai/rinnsal/blob/master/README_bn.md): Bengali documentation; README languages remain separate from CLI translation coverage
+- [README_pt](https://github.com/ellmos-ai/rinnsal/blob/master/README_pt.md): Portuguese documentation; README languages remain separate from CLI translation coverage
 - [LICENSE](https://github.com/ellmos-ai/rinnsal/blob/master/LICENSE): MIT license text
 - [THIRD_PARTY_LICENSES](https://github.com/ellmos-ai/rinnsal/blob/master/THIRD_PARTY_LICENSES.md): Dependency audit and governance invariants
 

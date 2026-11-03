@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+- Added complete Bengali and Portuguese READMEs, reciprocal navigation across all eleven documentation languages, LLM-index discovery and source-distribution inclusion (2026-11-03).
+
+- Added the complete Arabic README, reciprocal navigation across nine documentation languages, LLM-index discovery and source-distribution inclusion (2026-11-03).
+
+- Added the complete Hindi README, reciprocal navigation across eight documentation languages, LLM-index discovery and source-distribution inclusion (2026-11-03).
+
+- Added the complete French README, reciprocal navigation across seven documentation languages, LLM-index discovery and source-distribution inclusion (2026-11-03).
+
+### Documentation languages (2026-11-02)
+
+- Added Japanese and Russian READMEs with reciprocal navigation across all six documentation languages.
+- Included all six READMEs, the LLM index and changelog in the source distribution.
+- Added a reviewed Simplified Chinese README with reciprocal language navigation. Indexed the Spanish and Chinese READMEs in `llms.txt`; documentation languages remain separate from runtime localization coverage.
+
 ### CI Matrix Hardening, PEP 621 Metadata, Contract Tests & Hygiene (2026-09-19)
 
 - **CI Matrix & Hardening (`tests.yml`, etc.)**: Hardened CI workflow matrix across Python 3.10, 3.11, 3.12, and 3.13 on both `ubuntu-latest` and `windows-latest`. Added concurrency controls (`cancel-in-progress: true`), explicit minimal token permissions (`contents: read`), and strict job timeouts (`timeout-minutes: 15`). Also hardened `stale.yml`, `welcome.yml`, `auto-assign.yml`, and `label-sync.yml` with concurrency and timeout guards.
