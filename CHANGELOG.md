@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Added the complete French README, reciprocal navigation across seven documentation languages, LLM-index discovery and source-distribution inclusion (2026-11-03).
+
 ### Documentation languages (2026-11-02)
 
 - Added Japanese and Russian READMEs with reciprocal navigation across all six documentation languages.
