@@ -1,2 +1,2 @@
-include README.md README_de.md README_es.md README_zh.md README_ja.md README_ru.md README_fr.md README_hi.md
+include README.md README_de.md README_es.md README_zh.md README_ja.md README_ru.md README_fr.md README_hi.md README_ar.md
 include llms.txt CHANGELOG.md

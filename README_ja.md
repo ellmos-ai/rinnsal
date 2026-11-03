@@ -4,7 +4,7 @@
 
 <!-- worldset: {"translated_from_sha256":"f2a28f0eff8d9652f829f2907e2865ec9c4f5f60894f9997431cd22833c5e9c4","translator":"gpt-6-luna","translated_at":"2026-11-02"} -->
 
-**README文書の言語:** [🇬🇧 English](README.md) · [🇩🇪 Deutsch](README_de.md) · [🇪🇸 Español](README_es.md) · [🇨🇳 简体中文](README_zh.md) · **🇯🇵 日本語** · [🇷🇺 Русский](README_ru.md) · [🇫🇷 Français](README_fr.md) · [🇮🇳 हिन्दी](README_hi.md)
+**README文書の言語:** [🇬🇧 English](README.md) · [🇩🇪 Deutsch](README_de.md) · [🇪🇸 Español](README_es.md) · [🇨🇳 简体中文](README_zh.md) · **🇯🇵 日本語** · [🇷🇺 Русский](README_ru.md) · [🇫🇷 Français](README_fr.md) · [🇮🇳 हिन्दी](README_hi.md) · [🇸🇦 العربية](README_ar.md)
 
 これらは利用可能な README 文書の言語です。CLI の翻訳範囲は下記の i18n で別途説明します。README の日本語訳は、CLI・API・GUI 全体が日本語化されていることを意味しません。
 

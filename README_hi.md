@@ -2,7 +2,7 @@
 
 # Rinnsal
 
-**README की भाषाएँ:** [🇬🇧 English](README.md) · [🇩🇪 Deutsch](README_de.md) · [🇪🇸 Español](README_es.md) · [🇨🇳 简体中文](README_zh.md) · [🇯🇵 日本語](README_ja.md) · [🇷🇺 Русский](README_ru.md) · [🇫🇷 Français](README_fr.md) · **🇮🇳 हिन्दी**
+**README की भाषाएँ:** [🇬🇧 English](README.md) · [🇩🇪 Deutsch](README_de.md) · [🇪🇸 Español](README_es.md) · [🇨🇳 简体中文](README_zh.md) · [🇯🇵 日本語](README_ja.md) · [🇷🇺 Русский](README_ru.md) · [🇫🇷 Français](README_fr.md) · **🇮🇳 हिन्दी** · [🇸🇦 العربية](README_ar.md)
 
 ये README दस्तावेज़ की उपलब्ध भाषाएँ हैं। CLI के अनुवाद की स्थिति नीचे i18n अनुभाग में अलग से बताई गई है।
 
