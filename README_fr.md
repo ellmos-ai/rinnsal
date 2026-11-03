@@ -2,7 +2,7 @@
 
 # Rinnsal
 
-**Langues du README :** [🇬🇧 English](README.md) · [🇩🇪 Deutsch](README_de.md) · [🇪🇸 Español](README_es.md) · [🇨🇳 简体中文](README_zh.md) · [🇯🇵 日本語](README_ja.md) · [🇷🇺 Русский](README_ru.md) · **🇫🇷 Français**
+**Langues du README :** [🇬🇧 English](README.md) · [🇩🇪 Deutsch](README_de.md) · [🇪🇸 Español](README_es.md) · [🇨🇳 简体中文](README_zh.md) · [🇯🇵 日本語](README_ja.md) · [🇷🇺 Русский](README_ru.md) · **🇫🇷 Français** · [🇮🇳 हिन्दी](README_hi.md)
 
 Voici les langues disponibles pour la documentation README. La couverture des traductions de l’interface CLI est décrite séparément dans la section i18n ci-dessous.
 
