@@ -3,7 +3,7 @@
 
 # Rinnsal
 
-**README 语言版本：** [🇬🇧 English](README.md) · [🇩🇪 Deutsch](README_de.md) · [🇪🇸 Español](README_es.md) · **🇨🇳 简体中文** · [🇯🇵 日本語](README_ja.md) · [🇷🇺 Русский](README_ru.md) · [🇫🇷 Français](README_fr.md) · [🇮🇳 हिन्दी](README_hi.md) · [🇸🇦 العربية](README_ar.md)
+**README 语言版本：** [🇬🇧 English](README.md) · [🇩🇪 Deutsch](README_de.md) · [🇪🇸 Español](README_es.md) · **🇨🇳 简体中文** · [🇯🇵 日本語](README_ja.md) · [🇷🇺 Русский](README_ru.md) · [🇫🇷 Français](README_fr.md) · [🇮🇳 हिन्दी](README_hi.md) · [🇸🇦 العربية](README_ar.md) · [🇧🇩 বাংলা](README_bn.md) · [🇵🇹 Português](README_pt.md)
 
 这里列出的是 README 文档版本的语言。CLI 的翻译覆盖范围在下方的 i18n 部分单独说明；新增中文版 README 不代表 GUI、CLI 或 API 已完成中文本地化。
 

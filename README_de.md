@@ -2,7 +2,7 @@
 
 # Rinnsal
 
-**README-Sprachen:** [🇬🇧 English](README.md) · **🇩🇪 Deutsch** · [🇪🇸 Español](README_es.md) · [🇨🇳 Vereinfachtes Chinesisch](README_zh.md) · [🇯🇵 Japanisch](README_ja.md) · [🇷🇺 Russisch](README_ru.md) · [🇫🇷 Français](README_fr.md) · [🇮🇳 हिन्दी](README_hi.md) · [🇸🇦 العربية](README_ar.md)
+**README-Sprachen:** [🇬🇧 English](README.md) · **🇩🇪 Deutsch** · [🇪🇸 Español](README_es.md) · [🇨🇳 Vereinfachtes Chinesisch](README_zh.md) · [🇯🇵 Japanisch](README_ja.md) · [🇷🇺 Russisch](README_ru.md) · [🇫🇷 Français](README_fr.md) · [🇮🇳 हिन्दी](README_hi.md) · [🇸🇦 العربية](README_ar.md) · [🇧🇩 বাংলা](README_bn.md) · [🇵🇹 Português](README_pt.md)
 
 Dies sind die verfügbaren Sprachfassungen der README-Dokumentation. Der Übersetzungsumfang der CLI ist unten unter i18n gesondert beschrieben.
 

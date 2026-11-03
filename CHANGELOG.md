@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Added complete Bengali and Portuguese READMEs, reciprocal navigation across all eleven documentation languages, LLM-index discovery and source-distribution inclusion (2026-11-03).
+
 - Added the complete Arabic README, reciprocal navigation across nine documentation languages, LLM-index discovery and source-distribution inclusion (2026-11-03).
 
 - Added the complete Hindi README, reciprocal navigation across eight documentation languages, LLM-index discovery and source-distribution inclusion (2026-11-03).
