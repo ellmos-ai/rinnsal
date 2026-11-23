@@ -25,8 +25,8 @@ Rinnsal is designed as a **local-first, zero-dependency Python stdlib** infrastr
 
 Please **do not** report security vulnerabilities through public GitHub issues.
 
-1. Use GitHub's **Private Vulnerability Reporting** ("Security" tab → "Report a vulnerability"), or
-2. Contact the maintainers privately at `security@ellmos.ai`.
+1. Use GitHub's **Private Vulnerability Reporting**: [Report a vulnerability](https://github.com/ellmos-ai/rinnsal/security/advisories/new).
+2. There is currently no monitored security mailbox; please do not report by e-mail.
 
 **Response SLA:**
 - Initial acknowledgment: within **48 hours**
@@ -58,8 +58,8 @@ Rinnsal ist als **local-first, abhängigkeitsfreie Python-Stdlib-Schicht** konzi
 
 Bitte melde Sicherheitslücken **nicht** über öffentliche GitHub-Issues.
 
-1. Nutze GitHub **Private Vulnerability Reporting** (Tab *Security* → *Report a vulnerability*), oder
-2. Kontaktiere die Maintainer vertraulich unter `security@ellmos.ai`.
+1. Nutze GitHub **Private Vulnerability Reporting**: [Schwachstelle melden](https://github.com/ellmos-ai/rinnsal/security/advisories/new).
+2. Derzeit gibt es kein überwachtes Postfach für Sicherheitsmeldungen; bitte nicht per E-Mail melden.
 
 **Reaktionszeiten (SLA):**
 - Erste Rückmeldung: innerhalb von **48 Stunden**

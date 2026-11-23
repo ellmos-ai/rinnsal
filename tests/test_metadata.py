@@ -199,9 +199,10 @@ class TestMetadataContract(unittest.TestCase):
         self.assertIn("--strict-markers", addopts)
         self.assertNotIn("--basetemp", addopts, "Relative --basetemp in addopts is forbidden (T-20261114-932985855)")
         self.assertTrue(pytest_opts.get("xfail_strict"))
-        self.assertEqual(pytest_opts.get("asyncio_default_fixture_loop_scope"), "function")
+        self.assertNotIn("asyncio_default_fixture_loop_scope", pytest_opts, "pytest-asyncio is not a dependency")
         norecurse = pytest_opts.get("norecursedirs", [])
-        self.assertIn(".pytest_temp", norecurse)
+        for expected in (".*", "venv", "node_modules", ".pytest_temp"):
+            self.assertIn(expected, norecurse)
 
     def test_gitignore_hygiene_and_privacy_defense(self):
         content = (REPO_ROOT / ".gitignore").read_text(encoding="utf-8")
@@ -253,6 +254,13 @@ class TestMetadataContract(unittest.TestCase):
         self.assertIn("## Deutsch", coc)
 
         sec = (REPO_ROOT / "SECURITY.md").read_text(encoding="utf-8")
+        self.assertIn("security/advisories/new", sec)
+        # ellmos.ai / open-bricks.org do not resolve, lukasgeiger.com has no MX (ellmos-ai/ellmos-homebase-mcp#21)
+        dead = ("security@ellmos.ai", "security@open-bricks.org", "lukas@open-bricks.org", "support@lukasgeiger.com")
+        for rel in required:
+            text = (REPO_ROOT / rel).read_text(encoding="utf-8")
+            for address in dead:
+                self.assertNotIn(address, text, f"{rel} still advertises {address}")
         self.assertIn("48 hours", sec)
         self.assertIn("48 Stunden", sec)
 

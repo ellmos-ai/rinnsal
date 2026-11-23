@@ -40,7 +40,7 @@ This Code of Conduct applies within all project spaces, and also applies when an
 
 ### Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the project maintainers at `security@ellmos.ai`. All complaints will be reviewed and investigated promptly and fairly.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the project maintainers privately via [GitHub private reporting](https://github.com/ellmos-ai/rinnsal/security/advisories/new) (there is currently no monitored mailbox). All complaints will be reviewed and investigated promptly and fairly.
 
 ### Attribution
 
@@ -86,7 +86,7 @@ Dieser Verhaltenskodex gilt in allen Projekträumen sowie dann, wenn eine Person
 
 ### Meldung von Verstößen
 
-Vorfälle können vertraulich an die Projektbetreuer unter `security@ellmos.ai` gemeldet werden. Alle Hinweise werden zeitnah und fair geprüft.
+Vorfälle können vertraulich über die [private Meldefunktion von GitHub](https://github.com/ellmos-ai/rinnsal/security/advisories/new) an die Projektbetreuer gemeldet werden (derzeit gibt es kein überwachtes Postfach). Alle Hinweise werden zeitnah und fair geprüft.
 
 ### Herkunft
 
