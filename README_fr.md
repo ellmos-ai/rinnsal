@@ -9,7 +9,7 @@ Voici les langues disponibles pour la documentation README. La couverture des tr
 > Le petit ruisseau — une infrastructure légère et locale avant tout pour agents LLM, par [ellmos-ai](https://github.com/ellmos-ai).
 
 [![Matrice CI et hygiène](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
-[![Pytest : 119 réussis](https://img.shields.io/badge/Pytest-119%20passed-success)](tests/)
+[![Pytest : 125 réussis](https://img.shields.io/badge/Pytest-125%20passed-success)](tests/)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](pyproject.toml)
 [![Dépendances : 0 (bibliothèque standard uniquement)](https://img.shields.io/badge/Dependencies-0%20(stdlib%20only)-blue)](#features)
 [![Licence : MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)

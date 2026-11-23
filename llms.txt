@@ -23,6 +23,11 @@ Core modules: memory (facts, lessons, working notes, sessions), tasks (prioritie
 - [README_pt](https://github.com/ellmos-ai/rinnsal/blob/master/README_pt.md): Portuguese documentation; README languages remain separate from CLI translation coverage
 - [LICENSE](https://github.com/ellmos-ai/rinnsal/blob/master/LICENSE): MIT license text
 - [THIRD_PARTY_LICENSES](https://github.com/ellmos-ai/rinnsal/blob/master/THIRD_PARTY_LICENSES.md): Dependency audit and governance invariants
+- [SKILL](https://github.com/ellmos-ai/rinnsal/blob/master/SKILL.md): Product usage skill for LLM agents (CLI, Python APIs, ENV configuration, exit codes)
+- [llm.txt](https://github.com/ellmos-ai/rinnsal/blob/master/llm.txt): Compatibility pointer to llms.txt and SKILL.md
+- [CONTRIBUTING](https://github.com/ellmos-ai/rinnsal/blob/master/CONTRIBUTING.md): Bilingual contribution guide and quality gates
+- [SECURITY](https://github.com/ellmos-ai/rinnsal/blob/master/SECURITY.md): Bilingual security policy and private vulnerability reporting (48h SLA)
+- [CODE_OF_CONDUCT](https://github.com/ellmos-ai/rinnsal/blob/master/CODE_OF_CONDUCT.md): Bilingual Contributor Covenant v2.1 code of conduct
 
 ## Search and disambiguation
 
@@ -63,4 +68,4 @@ local LLM automation Python
 Ollama agent runner Python
 ```
 
-## Last-checked: 2026-09-19
+## Last-checked: 2026-11-23 (125 tests verified)

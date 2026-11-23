@@ -9,7 +9,7 @@ Dies sind die verfügbaren Sprachfassungen der README-Dokumentation. Der Überse
 > Das Rinnsal — leichtgewichtige, local-first LLM-Agent-Infrastruktur von [ellmos-ai](https://github.com/ellmos-ai).
 
 [![CI Matrix & Hygiene](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
-[![Pytest 119 passed](https://img.shields.io/badge/Pytest-119%20passed-success)](tests/)
+[![Pytest 125 passed](https://img.shields.io/badge/Pytest-125%20passed-success)](tests/)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](pyproject.toml)
 [![Abhängigkeiten: 0 (stdlib only)](https://img.shields.io/badge/Abh%C3%A4ngigkeiten-0%20(stdlib%20only)-blue)](#features)
 [![Lizenz: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
@@ -17,7 +17,7 @@ Dies sind die verfügbaren Sprachfassungen der README-Dokumentation. Der Überse
 [![LLM-Ready](https://img.shields.io/badge/LLM-Ready%20%F0%9F%A4%96-blue)](llms.txt)
 
 > [!NOTE]
-> **Für KI-Agenten & LLM-Tooling:** Eine maschinenlesbare Übersicht über Rinnsal, seine Modul-APIs, Architektur-Stufen und Suchbegriffe steht in [llms.txt](llms.txt) zur Verfügung.
+> **Für KI-Agenten & LLM-Tooling:** Eine maschinenlesbare Übersicht über Rinnsal, seine Modul-APIs, Architektur-Stufen und Suchbegriffe steht in [llms.txt](llms.txt) ([llm.txt](llm.txt)) sowie im Produkt-Skill [SKILL.md](SKILL.md) zur Verfügung.
 
 **Schnelleinstieg:** [Warum Rinnsal?](#warum-rinnsal) · [Systemarchitektur](#systemarchitektur) · [Quick Start](#quick-start) · [CLI](#cli) · [Docs](docs/) · [Changelog](CHANGELOG.md)
 
@@ -299,9 +299,14 @@ Rinnsal ist eher eine einbettbare Infrastrukturschicht als ein vollständiges As
 
 `ellmos Rinnsal`, `Rinnsal LLM-Agent-Infrastruktur`, `local-first LLM-Agent-Memory`, `Python-Stdlib-Agent-Framework`, `SQLite-Memory für LLM-Agenten`, `leichtgewichtiges Agent-Connector-Gateway`, `BACH Rinnsal Agent Stack`
 
-## Lizenz
+## Lizenz & Governance
 
-MIT -- Lukas Geiger
+- Lizenz: [MIT](LICENSE) — Lukas Geiger
+- Drittanbieter-Audit & Invarianten: [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)
+- Mitwirken: [CONTRIBUTING.md](CONTRIBUTING.md)
+- Verhaltenskodex: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+- Sicherheitsrichtlinie: [SECURITY.md](SECURITY.md)
+- Agenten-Skill & LLM-Index: [SKILL.md](SKILL.md) · [llms.txt](llms.txt) · [llm.txt](llm.txt)
 
 ---
 

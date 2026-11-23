@@ -66,11 +66,32 @@ uv.lock
 !package-lock.json
 
 # Test- & Cache-Artefakte
+.pytest_temp/
+.pytest_tmp*/
 .hypothesis/
 .coverage
 htmlcov/
 *.orig
 *.rej
+
+# Laufzeit-DB-Journale & temporäre Arbeitsdateien
+*.db-wal
+*.db-shm
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite3-wal
+*.sqlite3-shm
+tmpclaude-*
+
+# Interne Steuer-, Entscheidungs- & Marketing-Dateien (nie ins Ziel-Repo committen)
+*MARKETING-LOG.txt
+TO-DECIDE-USER*
+TASKPLAN_*.md
+*-TASKPLAN*
+.claude/
+.codex/
+.gemini/
+.agent/
 
 # Laufprotokolle der Pflegerunden (internes Arbeitsmaterial, kein Repo-Inhalt)
 _after-care/

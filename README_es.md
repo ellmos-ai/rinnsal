@@ -8,7 +8,7 @@
 > El goteo: infraestructura ligera de agentes LLM con prioridad local, de [ellmos-ai](https://github.com/ellmos-ai).
 
 [![Matriz de CI y control de calidad](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
-[![Pytest: 119 pruebas aprobadas](https://img.shields.io/badge/Pytest-119%20passed-success)](tests/)
+[![Pytest: 125 pruebas aprobadas](https://img.shields.io/badge/Pytest-125%20passed-success)](tests/)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](pyproject.toml)
 [![Dependencias: 0 (solo biblioteca estándar)](https://img.shields.io/badge/Dependencies-0%20(stdlib%20only)-blue)](#features)
 [![Licencia: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)

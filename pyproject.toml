@@ -29,9 +29,15 @@ Repository = "https://github.com/ellmos-ai/rinnsal"
 Documentation = "https://github.com/ellmos-ai/rinnsal#readme"
 Issues = "https://github.com/ellmos-ai/rinnsal/issues"
 Changelog = "https://github.com/ellmos-ai/rinnsal/blob/master/CHANGELOG.md"
+Contributing = "https://github.com/ellmos-ai/rinnsal/blob/master/CONTRIBUTING.md"
+Security = "https://github.com/ellmos-ai/rinnsal/blob/master/SECURITY.md"
+"Code of Conduct" = "https://github.com/ellmos-ai/rinnsal/blob/master/CODE_OF_CONDUCT.md"
 "Third-Party Licenses" = "https://github.com/ellmos-ai/rinnsal/blob/master/THIRD_PARTY_LICENSES.md"
 "Parent Organization" = "https://github.com/ellmos-ai"
 "LLM Ready" = "https://github.com/ellmos-ai/rinnsal/blob/master/llms.txt"
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "ruff>=0.4"]
 
 [project.scripts]
 rinnsal = "rinnsal.cli:main"
@@ -47,10 +53,12 @@ include = ["rinnsal*"]
 
 [tool.pytest.ini_options]
 minversion = "7.0"
-addopts = "-ra -v"
+addopts = "-ra -v --strict-markers"
+xfail_strict = true
+asyncio_default_fixture_loop_scope = "function"
 testpaths = ["tests"]
 pythonpath = ["."]
-norecursedirs = [".git", ".pytest_cache", ".venv", "venv", "build", "dist", "_after-care"]
+norecursedirs = [".git", ".pytest_cache", ".pytest_temp", ".pytest_tmp*", ".venv", "venv", "build", "dist", "_after-care"]
 
 [tool.ruff]
 target-version = "py310"

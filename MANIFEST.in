@@ -1,2 +1,3 @@
 include README.md README_de.md README_es.md README_zh.md README_ja.md README_ru.md README_fr.md README_hi.md README_ar.md README_bn.md README_pt.md
-include llms.txt CHANGELOG.md
+include LICENSE THIRD_PARTY_LICENSES.md CODE_OF_CONDUCT.md CONTRIBUTING.md SECURITY.md
+include SKILL.md llms.txt llm.txt CHANGELOG.md

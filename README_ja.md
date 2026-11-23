@@ -11,7 +11,7 @@
 > しずくの流れのように軽量な、[ellmos-ai](https://github.com/ellmos-ai) によるローカルファーストの LLM エージェント基盤。
 
 [![CI マトリクスとリポジトリの衛生](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
-[![Pytest 119件成功](https://img.shields.io/badge/Pytest-119%20passed-success)](tests/)
+[![Pytest 125件成功](https://img.shields.io/badge/Pytest-125%20passed-success)](tests/)
 [![Python 3.10 以降](https://img.shields.io/badge/Python-3.10%2B-blue)](pyproject.toml)
 [![依存関係: 0（標準ライブラリのみ）](https://img.shields.io/badge/Dependencies-0%20(stdlib%20only)-blue)](#features)
 [![ライセンス: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)

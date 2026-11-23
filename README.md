@@ -9,7 +9,7 @@ These are the available README documentation languages. CLI translation coverage
 > The trickle — lightweight, local-first LLM agent infrastructure by [ellmos-ai](https://github.com/ellmos-ai).
 
 [![CI Matrix & Hygiene](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
-[![Pytest 119 passed](https://img.shields.io/badge/Pytest-119%20passed-success)](tests/)
+[![Pytest 125 passed](https://img.shields.io/badge/Pytest-125%20passed-success)](tests/)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](pyproject.toml)
 [![Dependencies: 0 (stdlib only)](https://img.shields.io/badge/Dependencies-0%20(stdlib%20only)-blue)](#features)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
@@ -17,7 +17,7 @@ These are the available README documentation languages. CLI translation coverage
 [![LLM-Ready](https://img.shields.io/badge/LLM-Ready%20%F0%9F%A4%96-blue)](llms.txt)
 
 > [!NOTE]
-> **For AI Agents & LLM Tooling:** A machine-readable overview of Rinnsal, its module APIs, architectural tier positioning, and search terms is available in [llms.txt](llms.txt).
+> **For AI Agents & LLM Tooling:** A machine-readable overview of Rinnsal, its module APIs, architectural tier positioning, and search terms is available in [llms.txt](llms.txt) ([llm.txt](llm.txt)) and the product skill [SKILL.md](SKILL.md).
 
 **Quick links:** [Why Rinnsal?](#why-rinnsal) · [Architecture](#system-architecture) · [Quick Start](#quick-start) · [CLI](#cli) · [Docs](docs/) · [Changelog](CHANGELOG.md)
 
@@ -299,9 +299,14 @@ Rinnsal is closer to an embeddable infrastructure layer than a full assistant pr
 
 `ellmos Rinnsal`, `Rinnsal LLM agent infrastructure`, `local-first LLM agent memory`, `Python stdlib agent framework`, `SQLite memory for LLM agents`, `lightweight agent connector gateway`, `BACH Rinnsal agent stack`
 
-## License
+## License & Governance
 
-MIT -- Lukas Geiger
+- License: [MIT](LICENSE) — Lukas Geiger
+- Third-Party Audit & Invariants: [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md)
+- Contributing: [CONTRIBUTING.md](CONTRIBUTING.md)
+- Code of Conduct: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+- Security Policy: [SECURITY.md](SECURITY.md)
+- Agent Skill & LLM Index: [SKILL.md](SKILL.md) · [llms.txt](llms.txt) · [llm.txt](llm.txt)
 
 ---
 

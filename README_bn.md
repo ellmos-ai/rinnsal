@@ -9,7 +9,7 @@ README নথির জন্য এগুলোই উপলভ্য ভাষ
 > ক্ষুদ্র ধারাপ্রবাহ — LLM এজেন্টের জন্য হালকা, স্থানীয়-প্রথম অবকাঠামো, [ellmos-ai](https://github.com/ellmos-ai)-এর পক্ষ থেকে।
 
 [![CI ম্যাট্রিক্স ও পরিচ্ছন্নতা](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
-[![Pytest: 119টি পাস](https://img.shields.io/badge/Pytest-119%20passed-success)](tests/)
+[![Pytest: 125টি পাস](https://img.shields.io/badge/Pytest-125%20passed-success)](tests/)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](pyproject.toml)
 [![নির্ভরতা: 0 (শুধু মানক লাইব্রেরি)](https://img.shields.io/badge/Dependencies-0%20(stdlib%20only)-blue)](#features)
 [![লাইসেন্স: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)

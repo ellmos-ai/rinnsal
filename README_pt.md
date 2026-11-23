@@ -9,7 +9,7 @@ Estes são os idiomas disponíveis para a documentação README. A cobertura de 
 > O regato — infraestrutura leve para agentes LLM, com prioridade ao funcionamento local, por [ellmos-ai](https://github.com/ellmos-ai).
 
 [![Matriz de CI e higiene](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
-[![Pytest: 119 aprovados](https://img.shields.io/badge/Pytest-119%20passed-success)](tests/)
+[![Pytest: 125 aprovados](https://img.shields.io/badge/Pytest-125%20passed-success)](tests/)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](pyproject.toml)
 [![Dependências: 0 (somente biblioteca padrão)](https://img.shields.io/badge/Dependencies-0%20(stdlib%20only)-blue)](#features)
 [![Licença: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
