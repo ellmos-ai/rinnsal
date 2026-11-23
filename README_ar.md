@@ -9,7 +9,7 @@
 > الجَدْوَل الصغير — بنية تحتية خفيفة ومحلية أولًا لوكلاء LLM، من [ellmos-ai](https://github.com/ellmos-ai).
 
 [![مصفوفة CI والنظافة](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
-[![Pytest: اجتاز 119 اختبارًا](https://img.shields.io/badge/Pytest-119%20passed-success)](tests/)
+[![Pytest: اجتاز 125 اختبارًا](https://img.shields.io/badge/Pytest-125%20passed-success)](tests/)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](pyproject.toml)
 [![التبعيات: 0 (المكتبة القياسية فقط)](https://img.shields.io/badge/Dependencies-0%20(stdlib%20only)-blue)](#features)
 [![الترخيص: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)

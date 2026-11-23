@@ -9,7 +9,7 @@
 > छोटी धारा — LLM एजेंटों के लिए हल्का, स्थानीय-प्रथम आधारभूत ढाँचा, [ellmos-ai](https://github.com/ellmos-ai) की ओर से।
 
 [![CI मैट्रिक्स और स्वच्छता](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
-[![Pytest: 119 पास](https://img.shields.io/badge/Pytest-119%20passed-success)](tests/)
+[![Pytest: 125 पास](https://img.shields.io/badge/Pytest-125%20passed-success)](tests/)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](pyproject.toml)
 [![निर्भरताएँ: 0 (केवल मानक लाइब्रेरी)](https://img.shields.io/badge/Dependencies-0%20(stdlib%20only)-blue)](#features)
 [![लाइसेंस: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)

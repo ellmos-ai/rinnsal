@@ -11,7 +11,7 @@
 > Ручеёк — лёгкая инфраструктура для LLM-агентов с приоритетом локальной работы от [ellmos-ai](https://github.com/ellmos-ai).
 
 [![Матрица CI и гигиена репозитория](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
-[![Pytest: пройдено 119 тестов](https://img.shields.io/badge/Pytest-119%20passed-success)](tests/)
+[![Pytest: пройдено 125 тестов](https://img.shields.io/badge/Pytest-125%20passed-success)](tests/)
 [![Python 3.10 и выше](https://img.shields.io/badge/Python-3.10%2B-blue)](pyproject.toml)
 [![Зависимости: 0 (только стандартная библиотека)](https://img.shields.io/badge/Dependencies-0%20(stdlib%20only)-blue)](#features)
 [![Лицензия: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)

@@ -1,0 +1,4 @@
+# Compatibility pointer for llms.txt
+# Canonical LLM entry point: llms.txt
+# Product skill for agents: SKILL.md
+See ./llms.txt and ./SKILL.md

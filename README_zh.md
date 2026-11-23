@@ -10,7 +10,7 @@
 > 涓流——由 [ellmos-ai](https://github.com/ellmos-ai) 提供的轻量级、本地优先 LLM 智能体基础设施。
 
 [![CI 矩阵与质量检查](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/ellmos-ai/rinnsal/actions/workflows/tests.yml)
-[![Pytest：119 项测试通过](https://img.shields.io/badge/Pytest-119%20passed-success)](tests/)
+[![Pytest：125 项测试通过](https://img.shields.io/badge/Pytest-125%20passed-success)](tests/)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](pyproject.toml)
 [![依赖项：0（仅标准库）](https://img.shields.io/badge/Dependencies-0%20(stdlib%20only)-blue)](#features)
 [![许可证：MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
