@@ -4,10 +4,10 @@
 
 ### Repository Hygiene, CI/Packaging Hardening, P-022 & Contract Tests (2026-11-23)
 
-- **PEP 621 / Pytest Hardening (`pyproject.toml`)**: Added `[project.optional-dependencies].dev`, `Contributing` / `Security` / `Code of Conduct` URLs under `[project.urls]`, `--strict-markers`, `xfail_strict = true`, `asyncio_default_fixture_loop_scope = "function"`, and `.pytest_temp*` in `norecursedirs` (without relative `--basetemp`). Version `0.1.0` unchanged.
+- **PEP 621 / Pytest Hardening (`pyproject.toml`)**: Added `[project.optional-dependencies].dev`, `Contributing` / `Security` / `Code of Conduct` URLs under `[project.urls]`, `--strict-markers`, `xfail_strict = true`, and `.pytest_temp*` in `norecursedirs` (the list repeats the pytest defaults such as `.*`, `node_modules` and `*.egg`, because a custom list replaces them) (without relative `--basetemp`). Version `0.1.0` unchanged.
 - **CI & Automation Hygiene (`.github/`)**: Added `python -m pip check` and `python -m pip install --no-build-isolation --dry-run .` to `.github/workflows/tests.yml`; added `.github/dependabot.yml` (`github-actions` + `pip`) and bilingual `.github/ISSUE_TEMPLATE/{config.yml,bug_report.md,feature_request.md}`.
 - **`.gitignore` & Packaging (`MANIFEST.in`)**: Added `.pytest_temp/`, `.pytest_tmp*/`, SQLite WAL/SHM journals, and internal control/marketing file guards; included governance and P-022 files in `MANIFEST.in`.
-- **Governance & LLM Entrypoints**: Added bilingual `CODE_OF_CONDUCT.md`, `SECURITY.md`, expanded `CONTRIBUTING.md`, added product `SKILL.md` and `llm.txt`, updated `llms.txt`, `THIRD_PARTY_LICENSES.md`, `README.md`, and `README_de.md`.
+- **Governance & LLM Entrypoints**: Added bilingual `CODE_OF_CONDUCT.md`, `SECURITY.md`, expanded `CONTRIBUTING.md`, added product `SKILL.md` and `llm.txt`, updated `llms.txt`, `THIRD_PARTY_LICENSES.md`, `README.md`, and `README_de.md`. Security and Code-of-Conduct reports go through GitHub private vulnerability reporting; there is no monitored mailbox.
 - **Contract Tests (`tests/test_metadata.py`)**: Added 6 contract tests covering pytest/PEP 621 invariants, `.gitignore` hygiene, Dependabot/issue templates, governance/P-022 files, `MANIFEST.in` parity, and `README`/`llms.txt`/`tests.yml` links (125 total tests).
 
 - Added complete Bengali and Portuguese READMEs, reciprocal navigation across all eleven documentation languages, LLM-index discovery and source-distribution inclusion (2026-11-03).
